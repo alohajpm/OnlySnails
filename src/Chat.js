@@ -8,7 +8,6 @@ function Chat() {
   const chatDisplayRef = useRef(null);
 
   useEffect(() => {
-    // Add a welcome message when the component mounts
     if (messages.length === 0) {
       setMessages([
         { 
@@ -20,7 +19,6 @@ function Chat() {
   }, []);
 
   useEffect(() => {
-    // Scroll to the bottom of the chat display when new messages are added
     if (chatDisplayRef.current) {
       chatDisplayRef.current.scrollTop = chatDisplayRef.current.scrollHeight;
     }

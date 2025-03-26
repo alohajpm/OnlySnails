@@ -5,6 +5,32 @@ function Chat() {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [loadingMessageIndex, setLoadingMessageIndex] = useState(0);
+  
+  // Function to get random loading message
+  const getRandomLoadingMessage = () => {
+    const loadingMessages = [
+      "Slithering to find an answer...",
+      "Consulting my shell of knowledge...",
+      "Processing at gastropod speed...",
+      "Sliming through my mental database...",
+      "My tentacles are tingling with information...",
+      "Gathering intellectual mucus...",
+      "Thinking at 0.01 mph...",
+      "Extracting wisdom from my shell...",
+      "Professor Snail is contemplating...",
+      "Calculating snail-culations..."
+    ];
+    
+    // Rotate through loading messages
+    if (loadingMessageIndex >= loadingMessages.length - 1) {
+      setLoadingMessageIndex(0);
+    } else {
+      setLoadingMessageIndex(prevIndex => prevIndex + 1);
+    }
+    
+    return loadingMessages[loadingMessageIndex];
+  };
   const chatDisplayRef = useRef(null);
 
   useEffect(() => {
@@ -213,8 +239,8 @@ function Chat() {
         ))}
         {isLoading && (
           <div className="message bot loading">
-            <span className="loading-dots">
-              <span>.</span><span>.</span><span>.</span>
+            <span className="loading-message">
+              {getRandomLoadingMessage()}
             </span>
           </div>
         )}
@@ -231,7 +257,7 @@ function Chat() {
           disabled={isLoading}
         />
         <button onClick={handleSendMessage} disabled={isLoading}>
-          {isLoading ? 'Professor thinking...' : 'Send'}
+          {isLoading ? getRandomLoadingMessage().split('...')[0] : 'Send'}
         </button>
       </div>
     </section>

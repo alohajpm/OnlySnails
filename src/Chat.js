@@ -11,7 +11,7 @@ function Chat() {
     if (messages.length === 0) {
       setMessages([
         { 
-          text: "Hello! I'm Claude, your snail expert. Ask me anything about snails, their biology, care, or interesting facts!", 
+          text: "Hello! I'm your snail expert. Ask me anything about snails, their biology, care, or interesting facts!", 
           sender: 'bot' 
         }
       ]);

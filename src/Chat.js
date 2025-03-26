@@ -30,26 +30,19 @@ function Chat() {
     try {
       setIsLoading(true);
       
-      // Using environment variable from Vercel
-      const apiKey = process.env.NEXT_PUBLIC_CLAUDE_API_KEY;
-      
       // Format messages for Claude API
       const apiMessages = messageHistory.map(msg => ({
         role: msg.sender === 'user' ? 'user' : 'assistant',
         content: msg.text
       }));
 
-      const response = await fetch('https://api.anthropic.com/v1/messages', {
+      // Call our own API endpoint instead of Claude API directly
+      const response = await fetch('/api/claude', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'x-api-key': apiKey,
-          'anthropic-version': '2023-06-01'
         },
         body: JSON.stringify({
-          model: 'claude-3-sonnet-20240229',
-          max_tokens: 1000,
-          system: 'You are a helpful assistant that specializes in snails. You know everything about snail biology, habitats, species, care, and interesting facts. Always provide informative and factual responses about snails, and relate any general questions back to snails when possible.',
           messages: apiMessages
         })
       });

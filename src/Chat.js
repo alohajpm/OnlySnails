@@ -5,73 +5,91 @@ function Chat() {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [loadingMessageIndex, setLoadingMessageIndex] = useState(0);
-  
-  // Function to get random loading message
-  const getRandomLoadingMessage = () => {
-    const loadingMessages = [
-      "Slithering to find an answer...",
-      "Consulting my shell of knowledge...",
-      "Processing at gastropod speed...",
-      "Sliming through my mental database...",
-      "My tentacles are tingling with information...",
-      "Gathering intellectual mucus...",
-      "Thinking at 0.01 mph...",
-      "Extracting wisdom from my shell...",
-      "Professor Snail is contemplating...",
-      "Calculating snail-culations..."
-    ];
-    
-    // Rotate through loading messages
-    if (loadingMessageIndex >= loadingMessages.length - 1) {
-      setLoadingMessageIndex(0);
-    } else {
-      setLoadingMessageIndex(prevIndex => prevIndex + 1);
-    }
-    
-    return loadingMessages[loadingMessageIndex];
-  };
   const chatDisplayRef = useRef(null);
+  const loadingInterval = useRef(null);
+  const [loadingMessage, setLoadingMessage] = useState("Professor thinking...");
+
+  // Array of loading messages
+  const loadingMessages = [
+    "Slithering to find an answer...",
+    "Consulting my shell of knowledge...",
+    "Processing at gastropod speed...",
+    "Sliming through my mental database...",
+    "My tentacles are tingling with information...",
+    "Gathering intellectual mucus...",
+    "Thinking at 0.01 mph...",
+    "Extracting wisdom from my shell...",
+    "Professor Snail is contemplating...",
+    "Calculating snail-culations..."
+  ];
 
   useEffect(() => {
-    if (messages.length === 0) {
-      // Instead of setting a fixed message, we'll call the API for a unique intro
-      setIsLoading(true);
-      fetch('/api/claude', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          messages: [{ role: 'user', content: 'Introduce yourself as Professor Snail to a new visitor' }],
-          isIntro: true
-        })
-      })
-      .then(response => response.json())
-      .then(data => {
-        setMessages([{ 
-          text: data.content[0].text, 
-          sender: 'bot' 
-        }]);
-      })
-      .catch(error => {
-        console.error('Error getting intro:', error);
-        setMessages([{ 
-          text: "Well, hello there! I'm Professor Snail, PhD in Gastropodology. What snail-related questions can I answer for you today?", 
-          sender: 'bot' 
-        }]);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-    }
+    // Add a welcome message when the component mounts
+    // We'll start with a default message to ensure something shows immediately
+    setMessages([{ 
+      text: "Greetings, curious human! I'm Professor Snail, PhD in Gastropodology. Ask me anything about snails!", 
+      sender: 'bot' 
+    }]);
+    
+    // Then try to get a dynamic intro after the component is stable
+    const getIntro = async () => {
+      try {
+        const response = await fetch('/api/claude-intro');
+        if (!response.ok) throw new Error('Failed to fetch intro');
+        const data = await response.json();
+        if (data && data.message) {
+          // Replace the default message with the dynamic one
+          setMessages([{ text: data.message, sender: 'bot' }]);
+        }
+      } catch (error) {
+        console.error('Could not load dynamic intro:', error);
+        // We keep the default message if the API call fails
+      }
+    };
+    
+    // Get the dynamic intro after a short delay to ensure component is stable
+    setTimeout(getIntro, 100);
   }, []);
 
   useEffect(() => {
+    // Scroll to the bottom of the chat display when messages change
     if (chatDisplayRef.current) {
       chatDisplayRef.current.scrollTop = chatDisplayRef.current.scrollHeight;
     }
   }, [messages]);
+
+  // Effect for loading message rotation
+  useEffect(() => {
+    if (isLoading) {
+      let index = 0;
+      // Clear any existing interval
+      if (loadingInterval.current) {
+        clearInterval(loadingInterval.current);
+      }
+      
+      // Set initial loading message
+      setLoadingMessage(loadingMessages[0]);
+      
+      // Rotate loading messages every 2 seconds
+      loadingInterval.current = setInterval(() => {
+        index = (index + 1) % loadingMessages.length;
+        setLoadingMessage(loadingMessages[index]);
+      }, 2000);
+    } else {
+      // Clear interval when not loading
+      if (loadingInterval.current) {
+        clearInterval(loadingInterval.current);
+        loadingInterval.current = null;
+      }
+    }
+    
+    // Clean up interval on unmount
+    return () => {
+      if (loadingInterval.current) {
+        clearInterval(loadingInterval.current);
+      }
+    };
+  }, [isLoading]);
 
   const callClaudeAPI = async (messageHistory) => {
     try {
@@ -83,27 +101,18 @@ function Chat() {
         content: msg.text
       }));
 
-      // Call our own API endpoint instead of Claude API directly
+      // Call our API endpoint
       const response = await fetch('/api/claude', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          messages: apiMessages,
-          name: "Professor Snail" // Pass the character name to the API
+          messages: apiMessages
         })
       });
 
       if (!response.ok) {
-        const errorText = await response.text();
-        let errorData;
-        try {
-          errorData = JSON.parse(errorText);
-        } catch (e) {
-          errorData = { rawText: errorText };
-        }
-        console.error('API Error:', response.status, errorData);
         throw new Error(`API error: ${response.status}`);
       }
 
@@ -112,29 +121,7 @@ function Chat() {
       return data.content[0].text;
     } catch (error) {
       console.error('Error calling Claude API:', error);
-      // Instead of a fixed error message, let's generate a dynamic one
-      try {
-        // Try to get a unique error message
-        const errorResponse = await fetch('/api/claude', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            messages: [{ role: 'user', content: 'Generate a funny error message as Professor Snail' }],
-            isErrorMessage: true
-          })
-        });
-        
-        if (errorResponse.ok) {
-          const errorData = await errorResponse.json();
-          return errorData.content[0].text;
-        }
-      } catch (e) {
-        console.error('Error getting custom error message:', e);
-      }
-      
-      // Fallback if the API call for error message fails
+      // Array of error messages to randomize
       const errorMessages = [
         "Oh, shell and slime! My sophisticated snail brain encountered an error. Try again when I've recovered.",
         "Well, this is embarrassing. Even at my slow pace, I shouldn't be THIS slow. Try again later.",
@@ -143,6 +130,7 @@ function Chat() {
         "Apparently, my academic credentials don't protect me from technical difficulties. How humiliating."
       ];
       
+      // Return a random error message
       return errorMessages[Math.floor(Math.random() * errorMessages.length)];
     } finally {
       setIsLoading(false);
@@ -165,51 +153,24 @@ function Chat() {
         // Add Claude's response to chat
         setMessages(prevMessages => [...prevMessages, { text: claudeResponse, sender: 'bot' }]);
       } catch (error) {
-        // Add error message to chat
-        // Generate dynamic error message
-        try {
-          const errorResponse = await fetch('/api/claude', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              messages: [{ role: 'user', content: 'Generate a funny error message as Professor Snail' }],
-              isErrorMessage: true
-            })
-          });
-          
-          if (errorResponse.ok) {
-            const errorData = await errorResponse.json();
-            setMessages(prevMessages => [
-              ...prevMessages, 
-              { 
-                text: errorData.content[0].text, 
-                sender: 'bot' 
-              }
-            ]);
-          } else {
-            throw new Error("Couldn't get custom error message");
+        console.error('Error handling message:', error);
+        // Array of error messages to randomize
+        const errorMessages = [
+          "Oh, shell and slime! My sophisticated snail brain encountered an error. Try again when I've recovered.",
+          "Well, this is embarrassing. Even at my slow pace, I shouldn't be THIS slow. Try again later.",
+          "ERROR: Professor Snail is currently out of slime. Please try your question again shortly.",
+          "Hmm, seems my shell-housed brain needs a reboot. Give me a moment to recalibrate my gastropod genius.",
+          "Apparently, my academic credentials don't protect me from technical difficulties. How humiliating."
+        ];
+        
+        // Add a random error message to chat
+        setMessages(prevMessages => [
+          ...prevMessages, 
+          { 
+            text: errorMessages[Math.floor(Math.random() * errorMessages.length)], 
+            sender: 'bot' 
           }
-        } catch (e) {
-          console.error('Error getting custom error message:', e);
-          // Fallback array of error messages
-          const errorMessages = [
-            "Oh, shell and slime! My sophisticated snail brain encountered an error. Try again when I've recovered.",
-            "Well, this is embarrassing. Even at my slow pace, I shouldn't be THIS slow. Try again later.",
-            "ERROR: Professor Snail is currently out of slime. Please try your question again shortly.",
-            "Hmm, seems my shell-housed brain needs a reboot. Give me a moment to recalibrate my gastropod genius.",
-            "Apparently, my academic credentials don't protect me from technical difficulties. How humiliating."
-          ];
-          
-          setMessages(prevMessages => [
-            ...prevMessages, 
-            { 
-              text: errorMessages[Math.floor(Math.random() * errorMessages.length)], 
-              sender: 'bot' 
-            }
-          ]);
-        }
+        ]);
       }
     }
   };
@@ -229,7 +190,6 @@ function Chat() {
         ref={chatDisplayRef} 
         role="log"
         aria-live="polite" 
-        aria-atomic="false"
         aria-relevant="additions"
       >
         {messages.map((msg, index) => (
@@ -240,7 +200,7 @@ function Chat() {
         {isLoading && (
           <div className="message bot loading">
             <span className="loading-message">
-              {getRandomLoadingMessage()}
+              {loadingMessage}
             </span>
           </div>
         )}
@@ -257,7 +217,7 @@ function Chat() {
           disabled={isLoading}
         />
         <button onClick={handleSendMessage} disabled={isLoading}>
-          {isLoading ? getRandomLoadingMessage().split('...')[0] : 'Send'}
+          {isLoading ? 'Thinking...' : 'Send'}
         </button>
       </div>
     </section>

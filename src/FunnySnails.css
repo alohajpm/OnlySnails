@@ -1,0 +1,26 @@
+.funny-snails {
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.funny-snails h2 {
+  font-size: 1.8em;
+  margin-bottom: 1em;
+}
+
+.funny-snails .joke {
+  margin-bottom: 1.5em;
+}
+
+.funny-snails p {
+  line-height: 1.6;
+}
+
+.funny-snails img {
+  max-width: 80%;
+  height: auto;
+  margin-top: 1em;
+}

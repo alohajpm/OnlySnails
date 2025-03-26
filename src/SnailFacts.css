@@ -1,0 +1,30 @@
+.snail-facts {
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+.snail-facts h2 {
+  font-size: 1.8em;
+  margin-bottom: 1em;
+}
+
+.snail-facts article {
+  margin-bottom: 1.5em;
+  padding-bottom: 1.5em;
+  border-bottom: 1px solid #eee;
+}
+
+.snail-facts article:last-child {
+  border-bottom: none;
+}
+
+.snail-facts h3 {
+  font-size: 1.3em;
+  margin-bottom: 0.5em;
+}
+
+.snail-facts p {
+  line-height: 1.6;
+}

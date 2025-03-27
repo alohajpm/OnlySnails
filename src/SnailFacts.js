@@ -1,109 +1,229 @@
-import React, { useState } from 'react';
-import './SnailFacts.css';
+import React, { useState, useRef } from 'react';
+import './SnailRace.css';
 
-function SnailFacts({ fullPage = false }) {
-  const [expandedFact, setExpandedFact] = useState(null);
+function SnailRace() {
+  const [selectedSnail, setSelectedSnail] = useState(null);
+  const [raceInProgress, setRaceInProgress] = useState(false);
+  const [raceFinished, setRaceFinished] = useState(false);
+  const [winner, setWinner] = useState(null);
+  const snailRefs = useRef({
+    speedy: { progress: 0, id: 'speedy', name: 'Speedy', ref: null },
+    shelly: { progress: 0, id: 'shelly', name: 'Shelly', ref: null },
+    slugger: { progress: 0, id: 'slugger', name: 'Slugger', ref: null },
+    turbo: { progress: 0, id: 'turbo', name: 'Turbo', ref: null },
+  });
+  const animationFrameRef = useRef(null);
   
-  const facts = [
-    {
-      id: 1,
-      title: "Snails are Gastropods",
-      short: "Snails belong to the Gastropoda class, one of the most diverse animal groups on the planet.",
-      full: "Snails are members of the class Gastropoda, which includes over 60,000 species of land, freshwater, and marine snails and slugs. The name 'gastropod' comes from the Greek words 'gastér' (stomach) and 'poús' (foot), referring to the way their body and foot are located beneath their belly.",
-      image: `${process.env.PUBLIC_URL}/images/snail-fact1.jpg`
-    },
-    {
-      id: 2,
-      title: "Slow but Steady",
-      short: "Garden snails move at a speed of about 0.03 mph (50 meters per hour).",
-      full: "While they're famously slow, snail speed varies greatly by species. Garden snails move at approximately 0.03 mph (50 meters per hour). This slow pace is due to their unique form of locomotion, which involves muscle contractions that pass in waves from the snail's tail to its head along a layer of mucus. Their slime trail reduces friction and protects them from sharp objects.",
-      image: `${process.env.PUBLIC_URL}/images/snail-fact2.jpg`
-    },
-    {
-      id: 3,
-      title: "Shell Apartments",
-      short: "A snail's shell grows with them and provides protection throughout their life.",
-      full: "A snail's shell is a vital part of its anatomy, growing continuously throughout its life. The shell consists primarily of calcium carbonate and grows larger at the opening as the snail matures. Most snails can fully retract into their shells when threatened, and they can seal the entrance with a layer of dried mucus called an epiphragm during harsh conditions like drought.",
-      image: `${process.env.PUBLIC_URL}/images/snail-fact3.jpg`
-    },
-    {
-      id: 4,
-      title: "Dental Records",
-      short: "Snails can have over 14,000 teeth arranged on their radula.",
-      full: "Snails possess a ribbon-like tongue called a radula that's covered with thousands of microscopic teeth. Depending on the species, a snail can have anywhere from 1,000 to 14,000 teeth arranged in rows on its radula. The radula works like a conveyor belt or file, scraping up food particles as it moves back and forth. These teeth are not like human teeth but rather chitinous projections that constantly grow and replace themselves.",
-      image: `${process.env.PUBLIC_URL}/images/snail-fact4.jpg`
-    },
-    {
-      id: 5,
-      title: "Sleep Cycles",
-      short: "Some snails can sleep for up to three years during extreme weather.",
-      full: "During unfavorable conditions like extreme heat, cold, or drought, snails can enter a state of dormancy called estivation (during summer) or hibernation (during winter). In this state, they retract into their shells and seal the opening with a layer of mucus that hardens to form a protective cover. Some desert snail species have been documented to survive in this dormant state for up to three years, though most garden snails typically hibernate for a few months.",
-      image: `${process.env.PUBLIC_URL}/images/snail-fact5.jpg`
-    },
-    {
-      id: 6,
-      title: "Hermaphrodites",
-      short: "Most land snails are hermaphrodites, having both male and female reproductive organs.",
-      full: "Most terrestrial snail species are hermaphrodites, possessing both male and female reproductive organs. Despite this, they typically mate with another individual rather than self-fertilize. Snail mating can be a lengthy process, sometimes lasting several hours, and often involves elaborate courtship behaviors. After mating, both snails can lay eggs, making their reproductive strategy quite efficient in terms of population growth.",
-      image: `${process.env.PUBLIC_URL}/images/snail-fact6.jpg`
-    }
-  ];
-
-  const toggleFact = (id) => {
-    setExpandedFact(expandedFact === id ? null : id);
+  const selectSnail = (snailId) => {
+    setSelectedSnail(snailId);
   };
-
+  
+  const startRace = () => {
+    if (!selectedSnail || raceInProgress) return;
+    
+    // Reset race state
+    setRaceInProgress(true);
+    setRaceFinished(false);
+    setWinner(null);
+    
+    Object.keys(snailRefs.current).forEach(id => {
+      snailRefs.current[id].progress = 0;
+      if (snailRefs.current[id].ref) {
+        snailRefs.current[id].ref.style.setProperty('--progress', '0%');
+      }
+    });
+    
+    // Start animation
+    let lastTimestamp = 0;
+    const animate = (timestamp) => {
+      if (!lastTimestamp) lastTimestamp = timestamp;
+      const deltaTime = timestamp - lastTimestamp;
+      lastTimestamp = timestamp;
+      
+      let someoneWon = false;
+      
+      // Update snail positions
+      Object.keys(snailRefs.current).forEach(id => {
+        const snail = snailRefs.current[id];
+        
+        // Generate random speed (some snails are naturally faster, plus small randomness)
+        let baseSpeed = 0;
+        switch(id) {
+          case 'speedy': baseSpeed = 0.012; break;
+          case 'shelly': baseSpeed = 0.010; break;
+          case 'slugger': baseSpeed = 0.011; break;
+          case 'turbo': baseSpeed = 0.013; break;
+          default: baseSpeed = 0.01;
+        }
+        
+        // Add some randomness
+        const speed = baseSpeed * (0.8 + Math.random() * 0.4);
+        
+        // Update progress
+        snail.progress += speed * deltaTime;
+        
+        // Cap at 100%
+        if (snail.progress >= 100) {
+          snail.progress = 100;
+          
+          // If this is the first snail to reach 100%, declare winner
+          if (!someoneWon) {
+            someoneWon = true;
+            setWinner(snail);
+            setRaceFinished(true);
+            setRaceInProgress(false);
+          }
+        }
+        
+        // Update DOM
+        if (snail.ref) {
+          snail.ref.style.setProperty('--progress', `${snail.progress}%`);
+        }
+      });
+      
+      // Continue animation if race still in progress
+      if (!someoneWon) {
+        animationFrameRef.current = requestAnimationFrame(animate);
+      }
+    };
+    
+    animationFrameRef.current = requestAnimationFrame(animate);
+  };
+  
+  // Clean up animation frame on unmount
+  React.useEffect(() => {
+    return () => {
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+    };
+  }, []);
+  
   return (
-    <section className={`snail-facts ${fullPage ? 'full-page' : ''}`}>
+    <section className="snail-race">
       <div className="container">
-        <h2 className="section-title">Amazing <span className="accent">Snail Facts</span></h2>
+        <h2 className="section-title">The Great <span className="accent">Snail Race</span></h2>
+        <p className="race-intro">Test your luck in our virtual snail race! Pick your favorite competitor and cheer them on.</p>
         
-        {fullPage && (
-          <p className="section-intro">
-            Discover the fascinating world of snails with these incredible facts about these remarkable gastropods.
-            From their surprising abilities to their unique biology, snails are truly extraordinary creatures.
-          </p>
-        )}
-        
-        <div className="facts-grid">
-          {facts.map(fact => (
-            <div 
-              key={fact.id} 
-              className={`fact-card ${expandedFact === fact.id ? 'expanded' : ''}`}
-              onClick={() => toggleFact(fact.id)}
-            >
-              <div className="fact-image">
-                <img src={fact.image} alt={fact.title} loading="lazy" />
-              </div>
-              <div className="fact-content">
-                <h3>{fact.title}</h3>
-                <p className="fact-short">{fact.short}</p>
-                <p className="fact-full">{fact.full}</p>
+        <div className="race-container">
+          <div className="race-controls">
+            <div className="snail-selection">
+              <h3>Choose Your Snail:</h3>
+              <div className="snail-options">
                 <button 
-                  className="fact-toggle" 
-                  aria-expanded={expandedFact === fact.id}
-                  aria-label={expandedFact === fact.id ? "Show less" : "Show more"}
+                  className={`snail-option ${selectedSnail === 'speedy' ? 'selected' : ''}`}
+                  onClick={() => selectSnail('speedy')}
+                  disabled={raceInProgress}
+                  aria-pressed={selectedSnail === 'speedy'}
                 >
-                  {expandedFact === fact.id ? "Show Less" : "Show More"}
+                  <span className="snail-preview speedy"></span>
+                  <span className="snail-name">Speedy</span>
+                </button>
+                <button 
+                  className={`snail-option ${selectedSnail === 'shelly' ? 'selected' : ''}`}
+                  onClick={() => selectSnail('shelly')}
+                  disabled={raceInProgress}
+                  aria-pressed={selectedSnail === 'shelly'}
+                >
+                  <span className="snail-preview shelly"></span>
+                  <span className="snail-name">Shelly</span>
+                </button>
+                <button 
+                  className={`snail-option ${selectedSnail === 'slugger' ? 'selected' : ''}`}
+                  onClick={() => selectSnail('slugger')}
+                  disabled={raceInProgress}
+                  aria-pressed={selectedSnail === 'slugger'}
+                >
+                  <span className="snail-preview slugger"></span>
+                  <span className="snail-name">Slugger</span>
+                </button>
+                <button 
+                  className={`snail-option ${selectedSnail === 'turbo' ? 'selected' : ''}`}
+                  onClick={() => selectSnail('turbo')}
+                  disabled={raceInProgress}
+                  aria-pressed={selectedSnail === 'turbo'}
+                >
+                  <span className="snail-preview turbo"></span>
+                  <span className="snail-name">Turbo</span>
                 </button>
               </div>
             </div>
-          ))}
-        </div>
-        
-        {!fullPage && (
-          <div className="facts-footer">
             <button 
-              className="btn btn-secondary" 
-              onClick={() => document.querySelector('header button[class*="facts"]').click()}
+              id="start-race" 
+              className="btn btn-primary" 
+              onClick={startRace}
+              disabled={!selectedSnail || raceInProgress}
             >
-              View All Snail Facts
+              {raceInProgress ? 'Race in Progress...' : 'Start Race'}
             </button>
           </div>
-        )}
+          
+          <div className="race-track">
+            <div className="lane">
+              <div className="lane-label">Speedy</div>
+              <div 
+                className="snail speedy" 
+                style={{ '--progress': '0%' }}
+                ref={(el) => { snailRefs.current.speedy.ref = el; }}
+              ></div>
+              <div className="finish-line"></div>
+            </div>
+            <div className="lane">
+              <div className="lane-label">Shelly</div>
+              <div 
+                className="snail shelly" 
+                style={{ '--progress': '0%' }}
+                ref={(el) => { snailRefs.current.shelly.ref = el; }}
+              ></div>
+              <div className="finish-line"></div>
+            </div>
+            <div className="lane">
+              <div className="lane-label">Slugger</div>
+              <div 
+                className="snail slugger" 
+                style={{ '--progress': '0%' }}
+                ref={(el) => { snailRefs.current.slugger.ref = el; }}
+              ></div>
+              <div className="finish-line"></div>
+            </div>
+            <div className="lane">
+              <div className="lane-label">Turbo</div>
+              <div 
+                className="snail turbo" 
+                style={{ '--progress': '0%' }}
+                ref={(el) => { snailRefs.current.turbo.ref = el; }}
+              ></div>
+              <div className="finish-line"></div>
+            </div>
+          </div>
+          
+          <div className="race-results" aria-live="polite">
+            <h3>Race Results</h3>
+            <p id="race-status">
+              {!selectedSnail && 'Select your snail to begin!'}
+              {selectedSnail && !raceInProgress && !raceFinished && `${snailRefs.current[selectedSnail].name} is ready to race!`}
+              {raceInProgress && 'The race is on! Cheer for your snail!'}
+              {raceFinished && `Race finished! ${winner?.name || 'A snail'} is the winner!`}
+            </p>
+            {raceFinished && winner && (
+              <div id="winner-display" className={winner.id === selectedSnail ? 'your-snail-won' : ''}>
+                <p>
+                  {winner.id === selectedSnail 
+                    ? `Congratulations! Your snail ${winner.name} won the race!` 
+                    : `${winner.name} won the race.`
+                  }
+                </p>
+                <div className="winner-animation">
+                  <div className={`snail ${winner.id}`}></div>
+                  {winner.id === selectedSnail && <div className="celebration"></div>}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
       </div>
     </section>
   );
 }
 
-export default SnailFacts;
+export default SnailRace;

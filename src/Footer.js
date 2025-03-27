@@ -1,5 +1,6 @@
 import React from 'react';
 import './Footer.css';
+import logoSvg from './images/logo.svg';
 
 function Footer({ onNavigate }) {
   return (
@@ -7,7 +8,7 @@ function Footer({ onNavigate }) {
       <div className="container">
         <div className="footer-content">
           <div className="footer-logo">
-            <img src={`${process.env.PUBLIC_URL}/images/logo.svg`} alt="OnlySnails Logo" className="logo-img" />
+            <img src={logoSvg} alt="OnlySnails Logo" className="logo-img" />
             <h2>OnlySnails</h2>
             <p>The premier community for snail enthusiasts worldwide.</p>
           </div>

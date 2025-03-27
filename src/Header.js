@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Header.css';
+import logoSvg from './images/logo.svg';
 
 function Header({ onNavigate, currentSection }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -17,7 +18,7 @@ function Header({ onNavigate, currentSection }) {
     <header className="site-header">
       <div className="container header-container">
         <div className="logo" onClick={() => handleNavClick('home')}>
-          <img src={`${process.env.PUBLIC_URL}/images/logo.svg`} alt="OnlySnails Logo" className="logo-img" />
+          <img src={logoSvg} alt="OnlySnails Logo" className="logo-img" />
           <h1>OnlySnails</h1>
         </div>
         

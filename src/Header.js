@@ -1,6 +1,15 @@
 import React, { useState } from 'react';
 import './Header.css';
-import logoSvg from './images/logo.svg';
+
+// Try to import logo, but have a fallback
+let logoSvg;
+try {
+  logoSvg = require('./images/logo.svg').default;
+} catch (e) {
+  // Simple SVG data URL as fallback
+  logoSvg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%2300796B' /%3E%3C/svg%3E";
+  console.warn("Couldn't load logo image, using placeholder");
+}
 
 function Header({ onNavigate, currentSection }) {
   const [menuOpen, setMenuOpen] = useState(false);

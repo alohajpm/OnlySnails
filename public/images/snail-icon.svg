@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <!-- Shell -->
+  <path d="M18,10 Q20,5 15,5 Q10,5 8,10 Q6,15 10,17 Q14,19 16,15 Q18,11 18,10" fill="#00796B" />
+  <path d="M16,10 Q18,6 14,6 Q10,7 9,10 Q8,14 11,16 Q14,18 15,14 Q16,10 16,10" fill="#B2DFDB" />
+  
+  <!-- Body -->
+  <path d="M8,10 Q4,10 2,15 Q2,17 4,17 L10,17 Q14,17 14,15 L14,12 Q12,10 8,10" fill="#8D6E63" />
+  
+  <!-- Face -->
+  <circle cx="3" cy="13" r="0.5" fill="black" />
+  <path d="M4,14 Q4.5,14.5 5,14" stroke="black" stroke-width="0.2" fill="none" />
+</svg>

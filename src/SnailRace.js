@@ -1,5 +1,7 @@
 import React, { useState, useRef } from 'react';
 import './SnailRace.css';
+// Note: For this component, we're using CSS background images for the snails
+// rather than direct image imports, so we don't need to import those files here
 
 function SnailRace() {
   const [selectedSnail, setSelectedSnail] = useState(null);

@@ -1,26 +1,202 @@
 .funny-snails {
-  margin-bottom: 20px;
-  padding: 15px;
-  background-color: #fff;
-  border-radius: 5px;
+  padding: var(--space-2xl) 0;
+  background-color: var(--neutral-200);
+}
+
+.funny-snails.full-page {
+  min-height: calc(100vh - 300px);
+  background-color: var(--neutral-100);
+}
+
+.section-intro {
   text-align: center;
+  max-width: 800px;
+  margin: 0 auto var(--space-xl);
+  font-size: var(--font-size-lg);
+  color: var(--neutral-600);
 }
 
-.funny-snails h2 {
-  font-size: 1.8em;
-  margin-bottom: 1em;
+.memes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
 }
 
-.funny-snails .joke {
-  margin-bottom: 1.5em;
+.meme-card {
+  background-color: var(--neutral-100);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  cursor: pointer;
 }
 
-.funny-snails p {
-  line-height: 1.6;
+.meme-card:hover {
+  transform: translateY(-5px) rotate(1deg);
+  box-shadow: var(--shadow-lg);
 }
 
-.funny-snails img {
-  max-width: 80%;
-  height: auto;
-  margin-top: 1em;
+.meme-image {
+  height: 200px;
+  overflow: hidden;
+  background-color: var(--neutral-300);
+}
+
+.meme-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-normal);
+}
+
+.meme-card:hover .meme-image img {
+  transform: scale(1.05);
+}
+
+.meme-content {
+  padding: var(--space-md);
+}
+
+.meme-content h3 {
+  color: var(--primary-color);
+  margin-bottom: var(--space-xs);
+  font-size: var(--font-size-lg);
+}
+
+.meme-content p {
+  color: var(--neutral-700);
+  font-style: italic;
+  margin-bottom: 0;
+}
+
+.memes-footer {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-xl);
+}
+
+/* Meme Modal */
+.meme-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: var(--z-modal);
+  padding: var(--space-md);
+}
+
+.modal-content {
+  background-color: var(--neutral-100);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  max-width: 800px;
+  width: 100%;
+  max-height: 90vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 30px;
+  background: none;
+  border: none;
+  color: var(--neutral-100);
+  cursor: pointer;
+  z-index: 1;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.modal-image {
+  width: 100%;
+  max-height: 60vh;
+  overflow: hidden;
+}
+
+.modal-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.modal-details {
+  padding: var(--space-lg);
+}
+
+.modal-details h3 {
+  color: var(--primary-color);
+  margin-bottom: var(--space-sm);
+  font-size: var(--font-size-xl);
+}
+
+.modal-caption {
+  font-size: var(--font-size-lg);
+  color: var(--neutral-700);
+  font-style: italic;
+  margin-bottom: var(--space-md);
+}
+
+.share-buttons {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.share-btn {
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  font-size: var(--font-size-sm);
+}
+
+.share-btn.facebook {
+  background-color: #3b5998;
+  color: white;
+}
+
+.share-btn.twitter {
+  background-color: #1da1f2;
+  color: white;
+}
+
+.share-btn.copy {
+  background-color: var(--neutral-300);
+  color: var(--neutral-800);
+}
+
+.share-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .section-intro {
+    font-size: var(--font-size-md);
+  }
+  
+  .modal-content {
+    max-width: 95%;
+  }
+}
+
+@media (max-width: 576px) {
+  .memes-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .share-buttons {
+    flex-direction: column;
+  }
 }

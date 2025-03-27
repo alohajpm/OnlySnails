@@ -8,42 +8,42 @@ function FunnySnails({ fullPage = false }) {
     {
       id: 1,
       title: "Speed Racer",
-      image: "/images/funny-snail1.jpg",
+      image: `${process.env.PUBLIC_URL}/images/funny-snail1.jpg`,
       caption: "When someone tells me to hurry up",
       altText: "A snail wearing tiny racing goggles and a helmet"
     },
     {
       id: 2,
       title: "Home Improvement",
-      image: "/images/funny-snail2.jpg",
+      image: `${process.env.PUBLIC_URL}/images/funny-snail2.jpg`,
       caption: "Just renovated the house, what do you think?",
       altText: "A snail with a colorfully painted shell decorated to look like a tiny house"
     },
     {
       id: 3,
       title: "Monday Mood",
-      image: "/images/funny-snail3.jpg",
+      image: `${process.env.PUBLIC_URL}/images/funny-snail3.jpg`,
       caption: "Me trying to get to work on Monday morning",
       altText: "A snail slowly climbing up a vertical surface looking exhausted"
     },
     {
       id: 4,
       title: "Shell Shock",
-      image: "/images/funny-snail4.jpg",
+      image: `${process.env.PUBLIC_URL}/images/funny-snail4.jpg`,
       caption: "When someone touches your shell without permission",
       altText: "A startled looking snail quickly retreating into its shell"
     },
     {
       id: 5,
       title: "Garden Party",
-      image: "/images/funny-snail5.jpg",
+      image: `${process.env.PUBLIC_URL}/images/funny-snail5.jpg`,
       caption: "POV: You're the last lettuce leaf in the garden",
       altText: "Multiple snails gathered on a leaf"
     },
     {
       id: 6,
       title: "Slime Time",
-      image: "/images/funny-snail6.jpg",
+      image: `${process.env.PUBLIC_URL}/images/funny-snail6.jpg`,
       caption: "My trail after explaining my complex feelings",
       altText: "A snail leaving a complicated zigzag slime trail"
     }

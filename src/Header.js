@@ -1,86 +1,46 @@
-import React, { useState } from 'react';
-import './Header.css';
+import React from 'react';
+import './Hero.css';
 
-// Try to import logo, but have a fallback
-let logoSvg;
+// Try to import hero image with fallback
+let heroSnailImg;
 try {
-  logoSvg = require('./images/logo.svg').default;
+  heroSnailImg = require('./images/hero-snail.png').default;
 } catch (e) {
-  // Simple SVG data URL as fallback
-  logoSvg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%2300796B' /%3E%3C/svg%3E";
-  console.warn("Couldn't load logo image, using placeholder");
+  // Placeholder colored rectangle as fallback
+  heroSnailImg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect width='600' height='400' fill='%2348A999' /%3E%3C/svg%3E";
+  console.warn("Couldn't load hero image, using placeholder");
 }
 
-function Header({ onNavigate, currentSection }) {
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
-
-  const handleNavClick = (section) => {
-    onNavigate(section);
-    setMenuOpen(false);
-  };
-
+function Hero() {
   return (
-    <header className="site-header">
-      <div className="container header-container">
-        <div className="logo" onClick={() => handleNavClick('home')}>
-          <img src={logoSvg} alt="OnlySnails Logo" className="logo-img" />
-          <h1>OnlySnails</h1>
+    <section className="hero-section">
+      <div className="container">
+        <div className="hero-content">
+          <h2>Welcome to the Premier <span className="accent">Snail Enthusiast</span> Community</h2>
+          <p>Discover, share, and connect with fellow gastropod admirers. From rare species to expert care tips, dive into the fascinating world of snails.</p>
+          <div className="cta-buttons">
+            <button className="btn btn-primary" onClick={() => window.scrollTo({ top: document.querySelector('.snail-facts')?.offsetTop || 0, behavior: 'smooth' })}>
+              Explore Snail Facts
+            </button>
+            <button className="btn btn-secondary" onClick={() => window.scrollTo({ top: document.querySelector('.funny-snails')?.offsetTop || 0, behavior: 'smooth' })}>
+              See Funny Snails
+            </button>
+          </div>
         </div>
-        
-        <nav>
-          <button 
-            className="mobile-menu-toggle" 
-            aria-label="Toggle menu"
-            aria-expanded={menuOpen}
-            onClick={toggleMenu}
-          >
-            <span className="bar"></span>
-            <span className="bar"></span>
-            <span className="bar"></span>
-          </button>
-          
-          <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
-            <li>
-              <button 
-                className={currentSection === 'home' ? 'active' : ''} 
-                onClick={() => handleNavClick('home')}
-              >
-                Home
-              </button>
-            </li>
-            <li>
-              <button 
-                className={currentSection === 'facts' ? 'active' : ''} 
-                onClick={() => handleNavClick('facts')}
-              >
-                Snail Facts
-              </button>
-            </li>
-            <li>
-              <button 
-                className={currentSection === 'funny' ? 'active' : ''} 
-                onClick={() => handleNavClick('funny')}
-              >
-                Funny Snails
-              </button>
-            </li>
-            <li>
-              <button 
-                className={`${currentSection === 'chat' ? 'active' : ''} highlight`} 
-                onClick={() => handleNavClick('chat')}
-              >
-                Chat
-              </button>
-            </li>
-          </ul>
-        </nav>
+        <div className="hero-image">
+          <div className="image-container">
+            <img src={heroSnailImg} alt="A beautiful garden snail" className="main-image" />
+            <div className="floating-elements">
+              <span className="floating-element leaf-1"></span>
+              <span className="floating-element leaf-2"></span>
+              <span className="floating-element bubble-1"></span>
+              <span className="floating-element bubble-2"></span>
+            </div>
+          </div>
+        </div>
       </div>
-    </header>
+    </section>
   );
 }
 
-export default Header;
+export default Hero;

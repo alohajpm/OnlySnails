@@ -47,7 +47,7 @@
   position: absolute;
   width: 24px;
   height: 18px;
-  background-image: url('%PUBLIC_URL%/images/snail-icon.svg');
+  background-image: url('./images/snail-icon.svg');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;

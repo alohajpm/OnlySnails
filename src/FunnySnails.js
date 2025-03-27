@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
 import './FunnySnails.css';
+import funnySnail1 from './images/funny-snail1.jpg';
+import funnySnail2 from './images/funny-snail2.jpg';
+import funnySnail3 from './images/funny-snail3.jpg';
+import funnySnail4 from './images/funny-snail4.jpg';
+import funnySnail5 from './images/funny-snail5.jpg';
+import funnySnail6 from './images/funny-snail6.jpg';
 
 function FunnySnails({ fullPage = false }) {
   const [selectedMeme, setSelectedMeme] = useState(null);
@@ -8,42 +14,42 @@ function FunnySnails({ fullPage = false }) {
     {
       id: 1,
       title: "Speed Racer",
-      image: `${process.env.PUBLIC_URL}/images/funny-snail1.jpg`,
+      image: funnySnail1,
       caption: "When someone tells me to hurry up",
       altText: "A snail wearing tiny racing goggles and a helmet"
     },
     {
       id: 2,
       title: "Home Improvement",
-      image: `${process.env.PUBLIC_URL}/images/funny-snail2.jpg`,
+      image: funnySnail2,
       caption: "Just renovated the house, what do you think?",
       altText: "A snail with a colorfully painted shell decorated to look like a tiny house"
     },
     {
       id: 3,
       title: "Monday Mood",
-      image: `${process.env.PUBLIC_URL}/images/funny-snail3.jpg`,
+      image: funnySnail3,
       caption: "Me trying to get to work on Monday morning",
       altText: "A snail slowly climbing up a vertical surface looking exhausted"
     },
     {
       id: 4,
       title: "Shell Shock",
-      image: `${process.env.PUBLIC_URL}/images/funny-snail4.jpg`,
+      image: funnySnail4,
       caption: "When someone touches your shell without permission",
       altText: "A startled looking snail quickly retreating into its shell"
     },
     {
       id: 5,
       title: "Garden Party",
-      image: `${process.env.PUBLIC_URL}/images/funny-snail5.jpg`,
+      image: funnySnail5,
       caption: "POV: You're the last lettuce leaf in the garden",
       altText: "Multiple snails gathered on a leaf"
     },
     {
       id: 6,
       title: "Slime Time",
-      image: `${process.env.PUBLIC_URL}/images/funny-snail6.jpg`,
+      image: funnySnail6,
       caption: "My trail after explaining my complex feelings",
       altText: "A snail leaving a complicated zigzag slime trail"
     }

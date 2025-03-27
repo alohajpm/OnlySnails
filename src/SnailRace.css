@@ -12,7 +12,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('%PUBLIC_URL%/images/leaf-pattern.svg');
+  background-image: url('./images/leaf-pattern.svg');
   background-size: 200px;
   opacity: 0.05;
   pointer-events: none;
@@ -88,19 +88,19 @@
 }
 
 .snail-preview.speedy {
-  background-image: url('%PUBLIC_URL%/images/snail-speedy.svg');
+  background-image: url('./images/snail-speedy.svg');
 }
 
 .snail-preview.shelly {
-  background-image: url('%PUBLIC_URL%/images/snail-shelly.svg');
+  background-image: url('./images/snail-shelly.svg');
 }
 
 .snail-preview.slugger {
-  background-image: url('%PUBLIC_URL%/images/snail-slugger.svg');
+  background-image: url('./images/snail-slugger.svg');
 }
 
 .snail-preview.turbo {
-  background-image: url('%PUBLIC_URL%/images/snail-turbo.svg');
+  background-image: url('./images/snail-turbo.svg');
 }
 
 .snail-name {
@@ -153,19 +153,19 @@
 }
 
 .snail.speedy {
-  background-image: url('%PUBLIC_URL%/images/snail-speedy.svg');
+  background-image: url('./images/snail-speedy.svg');
 }
 
 .snail.shelly {
-  background-image: url('%PUBLIC_URL%/images/snail-shelly.svg');
+  background-image: url('./images/snail-shelly.svg');
 }
 
 .snail.slugger {
-  background-image: url('%PUBLIC_URL%/images/snail-slugger.svg');
+  background-image: url('./images/snail-slugger.svg');
 }
 
 .snail.turbo {
-  background-image: url('%PUBLIC_URL%/images/snail-turbo.svg');
+  background-image: url('./images/snail-turbo.svg');
 }
 
 .finish-line {

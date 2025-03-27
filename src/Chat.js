@@ -1,6 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './Chat.css';
-import userAvatarImg from './images/user-avatar.png';
+
+// Try to import user avatar with fallback
+let userAvatarImg;
+try {
+  userAvatarImg = require('./images/user-avatar.png').default;
+} catch (e) {
+  // Generic user silhouette as fallback
+  userAvatarImg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23BBB' /%3E%3Ccircle cx='50' cy='40' r='15' fill='%23888' /%3E%3Cpath d='M25,85 C25,65 75,65 75,85' fill='%23888' /%3E%3C/svg%3E";
+  console.warn("Couldn't load user avatar image, using placeholder");
+}
 
 function Chat() {
   // Keep the original chat functionality but update the styling

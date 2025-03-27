@@ -98,7 +98,7 @@
 .leaf-1 {
   width: 60px;
   height: 40px;
-  background-image: url('%PUBLIC_URL%/images/leaf-1.svg');
+  background-image: url('./images/leaf-1.svg');
   top: 10%;
   left: 5%;
   animation: float 8s ease-in-out infinite;
@@ -107,7 +107,7 @@
 .leaf-2 {
   width: 50px;
   height: 30px;
-  background-image: url('%PUBLIC_URL%/images/leaf-2.svg');
+  background-image: url('./images/leaf-2.svg');
   bottom: 15%;
   right: 10%;
   animation: float 6s ease-in-out infinite reverse;
@@ -116,7 +116,7 @@
 .bubble-1 {
   width: 30px;
   height: 30px;
-  background-image: url('%PUBLIC_URL%/images/bubble.svg');
+  background-image: url('./images/bubble.svg');
   top: 20%;
   right: 15%;
   animation: float 5s ease-in-out infinite 1s;
@@ -125,7 +125,7 @@
 .bubble-2 {
   width: 20px;
   height: 20px;
-  background-image: url('%PUBLIC_URL%/images/bubble.svg');
+  background-image: url('./images/bubble.svg');
   bottom: 25%;
   left: 20%;
   animation: float 7s ease-in-out infinite 0.5s;

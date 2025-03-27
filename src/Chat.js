@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './Chat.css';
+import userAvatarImg from './images/user-avatar.png';
 
 function Chat() {
   // Keep the original chat functionality but update the styling
@@ -7,7 +8,7 @@ function Chat() {
   const [messages, setMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
-  const [userAvatar, setUserAvatar] = useState(`${process.env.PUBLIC_URL}/images/user-avatar.png`);
+  const [userAvatar, setUserAvatar] = useState(userAvatarImg);
   const endOfMessagesRef = useRef(null);
   
   const API_URL = 'https://api.claude.ai/v1/messages';

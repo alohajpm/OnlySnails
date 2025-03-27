@@ -10,42 +10,42 @@ function SnailFacts({ fullPage = false }) {
       title: "Snails are Gastropods",
       short: "Snails belong to the Gastropoda class, one of the most diverse animal groups on the planet.",
       full: "Snails are members of the class Gastropoda, which includes over 60,000 species of land, freshwater, and marine snails and slugs. The name 'gastropod' comes from the Greek words 'gastér' (stomach) and 'poús' (foot), referring to the way their body and foot are located beneath their belly.",
-      image: "/images/snail-fact1.jpg"
+      image: `${process.env.PUBLIC_URL}/images/snail-fact1.jpg`
     },
     {
       id: 2,
       title: "Slow but Steady",
       short: "Garden snails move at a speed of about 0.03 mph (50 meters per hour).",
       full: "While they're famously slow, snail speed varies greatly by species. Garden snails move at approximately 0.03 mph (50 meters per hour). This slow pace is due to their unique form of locomotion, which involves muscle contractions that pass in waves from the snail's tail to its head along a layer of mucus. Their slime trail reduces friction and protects them from sharp objects.",
-      image: "/images/snail-fact2.jpg"
+      image: `${process.env.PUBLIC_URL}/images/snail-fact2.jpg`
     },
     {
       id: 3,
       title: "Shell Apartments",
       short: "A snail's shell grows with them and provides protection throughout their life.",
       full: "A snail's shell is a vital part of its anatomy, growing continuously throughout its life. The shell consists primarily of calcium carbonate and grows larger at the opening as the snail matures. Most snails can fully retract into their shells when threatened, and they can seal the entrance with a layer of dried mucus called an epiphragm during harsh conditions like drought.",
-      image: "/images/snail-fact3.jpg"
+      image: `${process.env.PUBLIC_URL}/images/snail-fact3.jpg`
     },
     {
       id: 4,
       title: "Dental Records",
       short: "Snails can have over 14,000 teeth arranged on their radula.",
       full: "Snails possess a ribbon-like tongue called a radula that's covered with thousands of microscopic teeth. Depending on the species, a snail can have anywhere from 1,000 to 14,000 teeth arranged in rows on its radula. The radula works like a conveyor belt or file, scraping up food particles as it moves back and forth. These teeth are not like human teeth but rather chitinous projections that constantly grow and replace themselves.",
-      image: "/images/snail-fact4.jpg"
+      image: `${process.env.PUBLIC_URL}/images/snail-fact4.jpg`
     },
     {
       id: 5,
       title: "Sleep Cycles",
       short: "Some snails can sleep for up to three years during extreme weather.",
       full: "During unfavorable conditions like extreme heat, cold, or drought, snails can enter a state of dormancy called estivation (during summer) or hibernation (during winter). In this state, they retract into their shells and seal the opening with a layer of mucus that hardens to form a protective cover. Some desert snail species have been documented to survive in this dormant state for up to three years, though most garden snails typically hibernate for a few months.",
-      image: "/images/snail-fact5.jpg"
+      image: `${process.env.PUBLIC_URL}/images/snail-fact5.jpg`
     },
     {
       id: 6,
       title: "Hermaphrodites",
       short: "Most land snails are hermaphrodites, having both male and female reproductive organs.",
       full: "Most terrestrial snail species are hermaphrodites, possessing both male and female reproductive organs. Despite this, they typically mate with another individual rather than self-fertilize. Snail mating can be a lengthy process, sometimes lasting several hours, and often involves elaborate courtship behaviors. After mating, both snails can lay eggs, making their reproductive strategy quite efficient in terms of population growth.",
-      image: "/images/snail-fact6.jpg"
+      image: `${process.env.PUBLIC_URL}/images/snail-fact6.jpg`
     }
   ];
 

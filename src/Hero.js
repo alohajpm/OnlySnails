@@ -1,5 +1,6 @@
 import React from 'react';
 import './Hero.css';
+import heroSnailImg from './images/hero-snail.png';
 
 function Hero() {
   return (
@@ -19,7 +20,7 @@ function Hero() {
         </div>
         <div className="hero-image">
           <div className="image-container">
-            <img src={`${process.env.PUBLIC_URL}/images/hero-snail.png`} alt="A beautiful garden snail" className="main-image" />
+            <img src={heroSnailImg} alt="A beautiful garden snail" className="main-image" />
             <div className="floating-elements">
               <span className="floating-element leaf-1"></span>
               <span className="floating-element leaf-2"></span>

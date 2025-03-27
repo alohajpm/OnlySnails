@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 40">
+  <!-- Shell -->
+  <path d="M40,15 Q45,5 35,5 Q25,5 20,15 Q15,25 25,30 Q35,35 40,25 Q45,15 40,15" fill="#2196F3" />
+  <path d="M37,15 Q42,7 33,8 Q26,9 23,15 Q20,22 28,26 Q36,30 37,23 Q38,16 37,15" fill="#BBDEFB" />
+  
+  <!-- Body -->
+  <path d="M20,15 Q10,15 5,25 Q5,30 10,30 L25,30 Q35,30 35,25 L35,20 Q30,15 20,15" fill="#90A4AE" />
+  
+  <!-- Face -->
+  <circle cx="7" cy="20" r="1" fill="black" />
+  <circle cx="7" cy="20" r="0.5" fill="white" />
+  <path d="M9,23 Q10,24 11,23" stroke="black" stroke-width="0.5" fill="none" />
+  
+  <!-- Turbo Decoration -->
+  <path d="M40,20 L45,20 L43,15 L48,15 L46,10 L51,10" stroke="#FFC107" stroke-width="1.5" fill="none" />
+  <circle cx="41" cy="20" r="3" fill="#1565C0" />
+  <circle cx="41" cy="20" r="1" fill="#BBDEFB" />
+  
+  <!-- Goggles -->
+  <ellipse cx="7" cy="18" rx="3" ry="2" fill="none" stroke="#FFC107" stroke-width="0.5" />
+  <path d="M4,18 L2,17" stroke="#FFC107" stroke-width="0.5" />
+  <path d="M10,18 L12,17" stroke="#FFC107" stroke-width="0.5" />
+</svg>

@@ -109,19 +109,19 @@
 }
 
 .social-link.instagram {
-  background-image: url('%PUBLIC_URL%/images/icon-instagram.svg');
+  background-image: url('./images/icon-instagram.svg');
 }
 
 .social-link.facebook {
-  background-image: url('%PUBLIC_URL%/images/icon-facebook.svg');
+  background-image: url('./images/icon-facebook.svg');
 }
 
 .social-link.youtube {
-  background-image: url('%PUBLIC_URL%/images/icon-youtube.svg');
+  background-image: url('./images/icon-youtube.svg');
 }
 
 .social-link.twitter {
-  background-image: url('%PUBLIC_URL%/images/icon-twitter.svg');
+  background-image: url('./images/icon-twitter.svg');
 }
 
 /* Responsive styles */

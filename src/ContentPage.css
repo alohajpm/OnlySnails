@@ -1,0 +1,473 @@
+/* ContentPage.css */
+.content-page {
+  padding: var(--space-xl) 0;
+  color: var(--neutral-800);
+}
+
+.content-page .container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.content-page .section-title {
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--space-xl);
+  text-align: center;
+  color: var(--neutral-900);
+}
+
+.content-page .section-title .accent {
+  color: var(--primary-color);
+}
+
+.content-page .content-wrapper {
+  background-color: var(--neutral-100);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-md);
+}
+
+.content-page .intro-section {
+  margin-bottom: var(--space-xl);
+}
+
+.content-page .intro-text {
+  font-size: var(--font-size-lg);
+  line-height: 1.6;
+  color: var(--neutral-700);
+  margin-bottom: var(--space-lg);
+}
+
+.content-page .warning-box {
+  background-color: var(--warning-light);
+  border-left: 4px solid var(--warning-color);
+  padding: var(--space-md);
+  border-radius: var(--radius-sm);
+  margin: var(--space-lg) 0;
+}
+
+.content-page .warning-box h4 {
+  color: var(--warning-dark);
+  margin-bottom: var(--space-xs);
+}
+
+.content-page .warning-box p {
+  color: var(--neutral-800);
+  margin-bottom: 0;
+}
+
+.content-page .note-box {
+  background-color: var(--info-light);
+  border-left: 4px solid var(--info-color);
+  padding: var(--space-md);
+  border-radius: var(--radius-sm);
+  margin: var(--space-lg) 0;
+}
+
+.content-page .note-box h4 {
+  color: var(--info-dark);
+  margin-bottom: var(--space-xs);
+}
+
+.content-page .note-box p {
+  color: var(--neutral-800);
+  margin-bottom: 0;
+}
+
+.content-page h3 {
+  font-size: var(--font-size-xl);
+  color: var(--primary-color);
+  margin-bottom: var(--space-md);
+}
+
+.content-page h4 {
+  font-size: var(--font-size-lg);
+  color: var(--neutral-900);
+  margin: var(--space-md) 0 var(--space-sm);
+}
+
+.content-page p {
+  margin-bottom: var(--space-md);
+  line-height: 1.6;
+}
+
+.content-page ul, 
+.content-page ol {
+  margin-bottom: var(--space-md);
+  padding-left: var(--space-lg);
+}
+
+.content-page li {
+  margin-bottom: var(--space-xs);
+}
+
+.content-page .btn {
+  display: inline-block;
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  border: none;
+}
+
+.content-page .btn-secondary {
+  background-color: var(--secondary-color);
+  color: var(--neutral-900);
+}
+
+.content-page .btn-secondary:hover {
+  background-color: var(--secondary-dark);
+  color: var(--neutral-100);
+}
+
+/* Health Symptoms styles */
+.health-symptoms .symptoms-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xl);
+}
+
+.health-symptoms .symptom-btn {
+  padding: var(--space-sm) var(--space-lg);
+  background-color: var(--neutral-200);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-weight: 500;
+  transition: all var(--transition-normal);
+}
+
+.health-symptoms .symptom-btn:hover {
+  background-color: var(--primary-light);
+  color: var(--neutral-100);
+}
+
+.health-symptoms .symptom-btn.active {
+  background-color: var(--primary-color);
+  color: var(--neutral-100);
+}
+
+.health-symptoms .symptom-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-lg);
+}
+
+.health-symptoms .symptom-item {
+  border: 1px solid var(--neutral-300);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  background-color: var(--neutral-100);
+}
+
+.health-symptoms .symptom-details,
+.health-symptoms .treatment-options {
+  margin-bottom: var(--space-md);
+}
+
+.health-symptoms .symptom-severity {
+  margin-top: var(--space-md);
+}
+
+.health-symptoms .severity-indicator {
+  display: inline-block;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+}
+
+.health-symptoms .mild {
+  background-color: var(--success-light);
+  color: var(--success-dark);
+}
+
+.health-symptoms .mild-to-moderate {
+  background-color: var(--info-light);
+  color: var(--info-dark);
+}
+
+.health-symptoms .moderate {
+  background-color: var(--warning-light);
+  color: var(--warning-dark);
+}
+
+.health-symptoms .moderate-to-severe {
+  background-color: #FFF0E9;
+  color: #D35400;
+}
+
+.health-symptoms .severe {
+  background-color: var(--danger-light);
+  color: var(--danger-dark);
+}
+
+.health-symptoms .emergency-care,
+.health-symptoms .find-vet {
+  margin-top: var(--space-xl);
+  padding: var(--space-lg);
+  border-radius: var(--radius-md);
+}
+
+.health-symptoms .emergency-care {
+  background-color: var(--warning-light);
+  border-left: 4px solid var(--warning-color);
+}
+
+.health-symptoms .find-vet {
+  background-color: var(--info-light);
+  border-left: 4px solid var(--info-color);
+}
+
+.health-symptoms .emergency-note,
+.health-symptoms .vet-note {
+  font-style: italic;
+  margin-top: var(--space-md);
+}
+
+/* Feeding Chart styles */
+.feeding-chart .category-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xl);
+}
+
+.feeding-chart .category-btn {
+  padding: var(--space-sm) var(--space-lg);
+  background-color: var(--neutral-200);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-weight: 500;
+  transition: all var(--transition-normal);
+}
+
+.feeding-chart .category-btn:hover {
+  background-color: var(--primary-light);
+  color: var(--neutral-100);
+}
+
+.feeding-chart .category-btn.active {
+  background-color: var(--primary-color);
+  color: var(--neutral-100);
+}
+
+.feeding-chart .food-category h3 {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.feeding-chart .recommendation {
+  font-size: var(--font-size-sm);
+  font-weight: normal;
+  padding: var(--space-xs) var(--space-sm);
+  background-color: var(--info-light);
+  color: var(--info-dark);
+  border-radius: var(--radius-full);
+}
+
+.feeding-chart .food-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-lg);
+  margin: var(--space-lg) 0;
+}
+
+.feeding-chart .food-item {
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.feeding-chart .food-item.safe {
+  border-left: 3px solid var(--success-color);
+  background-color: rgba(var(--success-color-rgb), 0.05);
+}
+
+.feeding-chart .food-item.moderate {
+  border-left: 3px solid var(--warning-color);
+  background-color: rgba(var(--warning-color-rgb), 0.05);
+}
+
+.feeding-chart .food-item.avoid {
+  border-left: 3px solid var(--danger-color);
+  background-color: rgba(var(--danger-color-rgb), 0.05);
+}
+
+.feeding-chart .food-rating {
+  color: var(--warning-color);
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--space-xs);
+}
+
+.feeding-chart .warning {
+  display: inline-block;
+  padding: var(--space-xs) var(--space-sm);
+  background-color: var(--danger-light);
+  color: var(--danger-dark);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  margin: var(--space-xs) 0;
+}
+
+.feeding-chart .serving-suggestion {
+  font-style: italic;
+  font-size: var(--font-size-sm);
+  margin-top: var(--space-sm);
+  color: var(--neutral-600);
+}
+
+.feeding-chart .feeding-tips {
+  margin-top: var(--space-xl);
+  padding: var(--space-lg);
+  background-color: var(--primary-light);
+  color: var(--neutral-100);
+  border-radius: var(--radius-md);
+}
+
+.feeding-chart .tips-list li {
+  margin-bottom: var(--space-sm);
+}
+
+.feeding-chart .downloadable-resources {
+  margin-top: var(--space-xl);
+  padding: var(--space-lg);
+  background-color: var(--neutral-200);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+.feeding-chart .download-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+}
+
+/* Beginners Guide styles */
+.beginners-guide .guide-section {
+  margin-bottom: var(--space-xl);
+}
+
+.beginners-guide .guide-list,
+.beginners-guide .care-list,
+.beginners-guide .handling-list {
+  margin-left: var(--space-md);
+}
+
+.beginners-guide .steps-container {
+  margin: var(--space-lg) 0;
+}
+
+.beginners-guide .step-item {
+  display: flex;
+  margin-bottom: var(--space-lg);
+}
+
+.beginners-guide .step-number {
+  background-color: var(--primary-color);
+  color: white;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-right: var(--space-md);
+  flex-shrink: 0;
+}
+
+.beginners-guide .step-content {
+  flex: 1;
+}
+
+.beginners-guide .step-content h4 {
+  margin-top: 0;
+  margin-bottom: var(--space-xs);
+}
+
+.beginners-guide .faq-section {
+  margin-top: var(--space-xl);
+  padding: var(--space-lg);
+  background-color: var(--neutral-200);
+  border-radius: var(--radius-md);
+}
+
+.beginners-guide .faq-item {
+  margin-bottom: var(--space-lg);
+}
+
+.beginners-guide .faq-item:last-child {
+  margin-bottom: 0;
+}
+
+.beginners-guide .faq-item h4 {
+  color: var(--primary-color);
+  margin-bottom: var(--space-xs);
+}
+
+.beginners-guide .next-steps {
+  margin-top: var(--space-xl);
+  text-align: center;
+  padding: var(--space-lg);
+  background-color: var(--primary-light);
+  color: var(--neutral-100);
+  border-radius: var(--radius-md);
+}
+
+.beginners-guide .next-steps-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .content-page .section-title {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .content-page .content-wrapper {
+    padding: var(--space-md);
+  }
+  
+  .health-symptoms .symptom-grid,
+  .feeding-chart .food-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .health-symptoms .symptoms-nav,
+  .feeding-chart .category-nav {
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+  
+  .feeding-chart .download-buttons,
+  .beginners-guide .next-steps-buttons {
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+}
+
+@media (max-width: 576px) {
+  .content-page .section-title {
+    font-size: var(--font-size-xl);
+  }
+  
+  .content-page .intro-text {
+    font-size: var(--font-size-md);
+  }
+}

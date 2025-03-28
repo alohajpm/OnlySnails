@@ -4,7 +4,7 @@ import './Chat.css';
 // Try to import user avatar with fallback
 let userAvatarImg;
 try {
-  userAvatarImg = require('./images/user-avatar.png').default;
+  userAvatarImg = require('./images/user-avatar.png');
 } catch (e) {
   // Generic user silhouette as fallback
   userAvatarImg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23BBB' /%3E%3Ccircle cx='50' cy='40' r='15' fill='%23888' /%3E%3Cpath d='M25,85 C25,65 75,65 75,85' fill='%23888' /%3E%3C/svg%3E";
@@ -12,15 +12,28 @@ try {
 }
 
 function Chat() {
-  // Keep the original chat functionality but update the styling
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const [userAvatar, setUserAvatar] = useState(userAvatarImg);
   const endOfMessagesRef = useRef(null);
-  
-  const API_URL = 'https://api.claude.ai/v1/messages';
+  const loadingInterval = useRef(null);
+  const [loadingMessage, setLoadingMessage] = useState("Professor thinking...");
+
+  // Array of loading messages
+  const loadingMessages = [
+    "Slithering to find an answer...",
+    "Consulting my shell of knowledge...",
+    "Processing at gastropod speed...",
+    "Sliming through my mental database...",
+    "My tentacles are tingling with information...",
+    "Gathering intellectual mucus...",
+    "Thinking at 0.01 mph...",
+    "Extracting wisdom from my shell...",
+    "Professor Snail is contemplating...",
+    "Calculating snail-culations..."
+  ];
   
   useEffect(() => {
     // Scroll to bottom whenever messages change
@@ -31,13 +44,70 @@ function Chat() {
       setMessages([
         {
           id: 'welcome',
-          content: "Welcome to the OnlySnails Chat! Ask me anything about snails and gastropods. I'm here to help with identification, care tips, and fascinating facts about our slimy friends.",
+          content: "Greetings, curious human! I'm Professor Snail, PhD in Gastropodology. Ask me anything about snails!",
           sender: 'assistant',
           timestamp: new Date().toISOString()
         }
       ]);
+      
+      // Try to get a dynamic intro after the component is stable
+      const getIntro = async () => {
+        try {
+          const response = await fetch('/api/claude-intro');
+          if (!response.ok) throw new Error('Failed to fetch intro');
+          const data = await response.json();
+          if (data && data.message) {
+            // Replace the default message with the dynamic one
+            setMessages([{ 
+              id: 'welcome',
+              content: data.message, 
+              sender: 'assistant',
+              timestamp: new Date().toISOString()
+            }]);
+          }
+        } catch (error) {
+          console.error('Could not load dynamic intro:', error);
+          // We keep the default message if the API call fails
+        }
+      };
+      
+      // Get the dynamic intro after a short delay to ensure component is stable
+      setTimeout(getIntro, 100);
     }
-  }, [messages]);
+  }, [messages.length]);
+
+  // Effect for loading message rotation
+  useEffect(() => {
+    if (isLoading) {
+      let index = 0;
+      // Clear any existing interval
+      if (loadingInterval.current) {
+        clearInterval(loadingInterval.current);
+      }
+      
+      // Set initial loading message
+      setLoadingMessage(loadingMessages[0]);
+      
+      // Rotate loading messages every 2 seconds
+      loadingInterval.current = setInterval(() => {
+        index = (index + 1) % loadingMessages.length;
+        setLoadingMessage(loadingMessages[index]);
+      }, 2000);
+    } else {
+      // Clear interval when not loading
+      if (loadingInterval.current) {
+        clearInterval(loadingInterval.current);
+        loadingInterval.current = null;
+      }
+    }
+    
+    // Clean up interval on unmount
+    return () => {
+      if (loadingInterval.current) {
+        clearInterval(loadingInterval.current);
+      }
+    };
+  }, [isLoading]);
   
   const scrollToBottom = () => {
     endOfMessagesRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -45,6 +115,48 @@ function Chat() {
   
   const handleInputChange = (e) => {
     setInput(e.target.value);
+  };
+  
+  const callClaudeAPI = async (messageHistory) => {
+    try {
+      // Format messages for Claude API
+      const apiMessages = messageHistory.map(msg => ({
+        role: msg.sender === 'user' ? 'user' : 'assistant',
+        content: msg.content
+      }));
+
+      // Call our API endpoint
+      const response = await fetch('/api/claude', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          messages: apiMessages
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error(`API error: ${response.status}`);
+      }
+
+      const data = await response.json();
+      // Extract text from the response
+      return data.content[0].text;
+    } catch (error) {
+      console.error('Error calling Claude API:', error);
+      // Array of error messages to randomize
+      const errorMessages = [
+        "Oh, shell and slime! My sophisticated snail brain encountered an error. Try again when I've recovered.",
+        "Well, this is embarrassing. Even at my slow pace, I shouldn't be THIS slow. Try again later.",
+        "ERROR: Professor Snail is currently out of slime. Please try your question again shortly.",
+        "Hmm, seems my shell-housed brain needs a reboot. Give me a moment to recalibrate my gastropod genius.",
+        "Apparently, my academic credentials don't protect me from technical difficulties. How humiliating."
+      ];
+      
+      // Return a random error message
+      return errorMessages[Math.floor(Math.random() * errorMessages.length)];
+    }
   };
   
   const handleSubmit = async (e) => {
@@ -65,55 +177,34 @@ function Chat() {
     setError('');
     
     try {
-      // Simulate API call with a timeout since we're keeping the original functionality
-      setTimeout(() => {
-        const assistantMessage = {
-          id: (Date.now() + 1).toString(),
-          content: generateSnailResponse(input),
-          sender: 'assistant',
-          timestamp: new Date().toISOString()
-        };
-        
-        setMessages(prev => [...prev, assistantMessage]);
-        setIsLoading(false);
-      }, 1000);
+      // Get all messages including the new one
+      const updatedMessages = [...messages, userMessage];
+      
+      // Get response from Claude API
+      const claudeResponse = await callClaudeAPI(updatedMessages);
+      
+      // Create assistant message
+      const assistantMessage = {
+        id: (Date.now() + 1).toString(),
+        content: claudeResponse,
+        sender: 'assistant',
+        timestamp: new Date().toISOString()
+      };
+      
+      setMessages(prev => [...prev, assistantMessage]);
     } catch (err) {
       console.error('Error sending message:', err);
       setError('Failed to send message. Please try again.');
+    } finally {
       setIsLoading(false);
     }
   };
   
-  // Simple response generator based on keywords
-  const generateSnailResponse = (query) => {
-    const lowerQuery = query.toLowerCase();
-    
-    if (lowerQuery.includes('hello') || lowerQuery.includes('hi') || lowerQuery.includes('hey')) {
-      return "Hello there! Welcome to OnlySnails chat. How can I help you with your snail questions today?";
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSubmit(e);
     }
-    
-    if (lowerQuery.includes('food') || lowerQuery.includes('eat') || lowerQuery.includes('feeding')) {
-      return "Most pet snails enjoy a diet of fresh vegetables like lettuce, cucumber, and carrots. You can also offer them fruits like apples and bananas occasionally. Make sure to wash all produce thoroughly to remove pesticides!";
-    }
-    
-    if (lowerQuery.includes('shell') || lowerQuery.includes('broken')) {
-      return "A snail's shell is vital for their health and protection. If your snail's shell is damaged, you should provide extra calcium (cuttlebone or calcium powder) in their diet. For serious cracks or breaks, consult a vet who specializes in exotic pets.";
-    }
-    
-    if (lowerQuery.includes('breed') || lowerQuery.includes('reproduce') || lowerQuery.includes('eggs')) {
-      return "Most land snails are hermaphrodites, meaning they have both male and female reproductive organs. They typically mate with another snail and both can lay eggs afterward. Snail eggs are usually laid in clusters in soil or damp, protected places. Depending on the species, they may lay anywhere from 30 to 120 eggs at a time!";
-    }
-    
-    if (lowerQuery.includes('habitat') || lowerQuery.includes('tank') || lowerQuery.includes('terrarium')) {
-      return "For a happy snail habitat, use a glass or plastic container with air holes. Add 2-3 inches of substrate (chemical-free soil or coconut coir), maintain humidity around 75-90%, and provide hiding spots like cork bark or clay pots. Include shallow water dishes, calcium sources, and regular cleaning to prevent harmful bacteria.";
-    }
-    
-    if (lowerQuery.includes('species') || lowerQuery.includes('type') || lowerQuery.includes('identify')) {
-      return "There are thousands of snail species! Popular pet species include the Giant African Land Snail (where legal), Garden snails, Grove snails, and Milk snails. For proper identification, I'd need to see a photo and details about size, shell pattern, and your location. You might also want to check our Species Guide section for more information.";
-    }
-    
-    // Default response for any other queries
-    return "That's an interesting question about snails! While I don't have specific information on that topic, I recommend checking our Snail Facts section or posting your question in our community forum for insights from experienced snail enthusiasts.";
   };
   
   // Format timestamp to readable time
@@ -125,18 +216,18 @@ function Chat() {
   return (
     <section className="chat-section">
       <div className="container">
-        <h2 className="section-title">Snail <span className="accent">Chat</span></h2>
+        <h2 className="section-title">Ask Professor <span className="accent">Snail</span></h2>
         
         <div className="chat-container">
           <div className="chat-header">
             <div className="chat-header-info">
               <div className="assistant-avatar"></div>
               <div className="assistant-info">
-                <h3>SnailBot</h3>
+                <h3>Professor Snail</h3>
                 <span className="status-indicator">Online</span>
               </div>
             </div>
-            <p className="chat-description">Ask me anything about snails and gastropod care!</p>
+            <p className="chat-description">Sarcastic Shell Specialist, PhD in Gastropodology</p>
           </div>
           
           <div className="chat-messages">
@@ -165,11 +256,7 @@ function Chat() {
                   <div className="assistant-avatar"></div>
                 </div>
                 <div className="message-content">
-                  <div className="typing-indicator">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                  </div>
+                  <div className="message-text loading-message">{loadingMessage}</div>
                 </div>
               </div>
             )}
@@ -185,7 +272,8 @@ function Chat() {
                 type="text"
                 value={input}
                 onChange={handleInputChange}
-                placeholder="Type your message here..."
+                onKeyDown={handleKeyDown}
+                placeholder="Ask the professor a question..."
                 disabled={isLoading}
               />
               <button 
@@ -231,7 +319,7 @@ function Chat() {
           </form>
           
           <div className="chat-footer">
-            <p>Note: This is a demo chat with limited responses. For full support, join our community forum.</p>
+            <p>Powered by Claude AI - Ask any snail-related questions!</p>
           </div>
         </div>
       </div>

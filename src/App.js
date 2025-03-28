@@ -10,6 +10,11 @@ import Chat from './Chat';
 import HealthSymptoms from './HealthSymptoms';
 import FeedingChart from './FeedingChart';
 import BeginnersGuide from './BeginnersGuide';
+import BreedingTips from './BreedingTips';
+import AboutUs from './AboutUs';
+import Contact from './Contact';
+import PrivacyPolicy from './PrivacyPolicy';
+import TermsOfService from './TermsOfService';
 
 function App() {
   const [highContrast, setHighContrast] = useState(false);
@@ -63,6 +68,11 @@ function App() {
         {selectedSection === 'beginners-guide' && <BeginnersGuide />}
         {selectedSection === 'feeding-chart' && <FeedingChart />}
         {selectedSection === 'health-symptoms' && <HealthSymptoms />}
+        {selectedSection === 'breeding-tips' && <BreedingTips />}
+        {selectedSection === 'about-us' && <AboutUs />}
+        {selectedSection === 'contact' && <Contact />}
+        {selectedSection === 'privacy-policy' && <PrivacyPolicy />}
+        {selectedSection === 'terms-of-service' && <TermsOfService />}
       </main>
       
       <Footer onNavigate={handleNavigation} />

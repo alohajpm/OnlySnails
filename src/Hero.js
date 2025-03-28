@@ -16,8 +16,9 @@ function Hero() {
     <section className="hero-section">
       <div className="container">
         <div className="hero-content">
-          <h2>Welcome to the Premier <span className="accent">Snail Enthusiast</span> Community</h2>
-          <p>Discover, share, and connect with fellow gastropod admirers. From rare species to expert care tips, dive into the fascinating world of snails.</p>
+          {/* Changed to a more engaging tagline instead of repeating the header */}
+          <h2>Explore the <span className="accent">Fascinating World</span> of Gastropods</h2>
+          <p>Discover, share, and connect with fellow gastropod admirers. From rare species to expert care tips, dive into the captivating universe of snails and their relatives.</p>
           <div className="cta-buttons">
             <button className="btn btn-primary" onClick={() => window.scrollTo({ top: document.querySelector('.snail-facts')?.offsetTop || 0, behavior: 'smooth' })}>
               Explore Snail Facts

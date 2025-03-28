@@ -4,7 +4,7 @@ import './Hero.css';
 // Try to import hero image with fallback
 let heroSnailImg;
 try {
-  heroSnailImg = require('./images/hero-snail.png').default;
+  heroSnailImg = require('./images/hero-snail.jpg').default;
 } catch (e) {
   // Placeholder colored rectangle as fallback
   heroSnailImg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect width='600' height='400' fill='%2348A999' /%3E%3C/svg%3E";

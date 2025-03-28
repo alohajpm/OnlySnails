@@ -4,6 +4,10 @@
   color: var(--neutral-100);
   position: relative;
   overflow: hidden;
+  margin-top: 1rem; /* Added space to separate from header */
+  border-radius: var(--radius-lg); /* Added rounded corners */
+  margin-left: var(--space-md);
+  margin-right: var(--space-md);
 }
 
 .hero-section::before {
@@ -45,16 +49,36 @@
   font-size: var(--font-size-4xl);
   color: var(--neutral-100);
   margin-bottom: var(--space-lg);
+  font-weight: 800; /* Made bolder */
+  line-height: 1.1; /* Tighter line height */
+  letter-spacing: -0.02em; /* Slightly tighter letter spacing */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Added subtle text shadow */
 }
 
 .hero-content p {
   font-size: var(--font-size-lg);
   margin-bottom: var(--space-xl);
   opacity: 0.9;
+  font-weight: 300; /* Lighter weight for contrast */
 }
 
 .hero-content .accent {
   color: var(--secondary-color);
+  position: relative;
+  display: inline-block;
+}
+
+/* Added underline effect to accent text */
+.hero-content .accent::after {
+  content: '';
+  position: absolute;
+  height: 6px;
+  width: 100%;
+  bottom: -5px;
+  left: 0;
+  background-color: var(--secondary-color);
+  opacity: 0.5;
+  border-radius: var(--radius-full);
 }
 
 .hero-image {
@@ -66,6 +90,7 @@
   overflow: hidden;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-xl);
+  transform: rotate(2deg); /* Slight rotation for visual interest */
 }
 
 .main-image {
@@ -138,6 +163,25 @@
   50% {
     transform: translateY(-15px);
   }
+}
+
+/* CTA Buttons enhancements */
+.cta-buttons {
+  display: flex;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.cta-buttons .btn {
+  padding: var(--space-sm) var(--space-xl);
+  font-weight: 600;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-normal);
+}
+
+.cta-buttons .btn:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
 }
 
 /* Responsive styles */

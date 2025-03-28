@@ -30,6 +30,8 @@
   box-shadow: var(--shadow-md);
   transition: transform var(--transition-normal), box-shadow var(--transition-normal);
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
 }
 
 .meme-card:hover {
@@ -38,9 +40,10 @@
 }
 
 .meme-image {
-  height: 200px;
+  height: 180px;
   overflow: hidden;
   background-color: var(--neutral-300);
+  position: relative;
 }
 
 .meme-image img {
@@ -56,6 +59,9 @@
 
 .meme-content {
   padding: var(--space-md);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .meme-content h3 {
@@ -68,6 +74,7 @@
   color: var(--neutral-700);
   font-style: italic;
   margin-bottom: 0;
+  font-size: var(--font-size-md);
 }
 
 .memes-footer {
@@ -118,14 +125,20 @@
 
 .modal-image {
   width: 100%;
+  height: auto;
   max-height: 60vh;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--neutral-200);
 }
 
 .modal-image img {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  max-height: 60vh;
 }
 
 .modal-details {
@@ -189,11 +202,19 @@
   .modal-content {
     max-width: 95%;
   }
+  
+  .meme-image {
+    height: 150px;
+  }
 }
 
 @media (max-width: 576px) {
   .memes-grid {
     grid-template-columns: 1fr;
+  }
+  
+  .meme-image {
+    height: 180px;
   }
   
   .share-buttons {

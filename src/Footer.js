@@ -36,10 +36,10 @@ function Footer({ onNavigate }) {
             <div className="link-group">
               <h3>Resources</h3>
               <ul>
-                <li><a href="#">Beginner's Guide</a></li>
-                <li><a href="#">Feeding Chart</a></li>
-                <li><a href="#">Health Symptoms</a></li>
-                <li><a href="#">Breeding Tips</a></li>
+                <li><button onClick={() => onNavigate('beginners-guide')}>Beginner's Guide</button></li>
+                <li><button onClick={() => onNavigate('feeding-chart')}>Feeding Chart</button></li>
+                <li><button onClick={() => onNavigate('health-symptoms')}>Health Symptoms</button></li>
+                <li><button onClick={() => onNavigate('breeding-tips')}>Breeding Tips</button></li>
               </ul>
             </div>
             

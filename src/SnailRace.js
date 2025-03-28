@@ -28,7 +28,14 @@ function SnailRace() {
     setRaceFinished(false);
     setWinner(null);
     
+    // Generate random base speeds for each snail at the start of each race
+    // This ensures no snail has a consistent advantage
+    const baseSpeeds = {};
     Object.keys(snailRefs.current).forEach(id => {
+      // Give each snail a random base speed between 0.010 and 0.013
+      baseSpeeds[id] = 0.010 + (Math.random() * 0.003);
+      
+      // Reset progress
       snailRefs.current[id].progress = 0;
       if (snailRefs.current[id].ref) {
         snailRefs.current[id].ref.style.setProperty('--progress', '0%');
@@ -48,18 +55,12 @@ function SnailRace() {
       Object.keys(snailRefs.current).forEach(id => {
         const snail = snailRefs.current[id];
         
-        // Generate random speed (some snails are naturally faster, plus small randomness)
-        let baseSpeed = 0;
-        switch(id) {
-          case 'speedy': baseSpeed = 0.012; break;
-          case 'shelly': baseSpeed = 0.010; break;
-          case 'slugger': baseSpeed = 0.011; break;
-          case 'turbo': baseSpeed = 0.013; break;
-          default: baseSpeed = 0.01;
-        }
+        // Get the randomly generated base speed for this snail
+        const baseSpeed = baseSpeeds[id];
         
-        // Add some randomness
-        const speed = baseSpeed * (0.8 + Math.random() * 0.4);
+        // Add variation to the speed each frame for more unpredictable racing
+        const speedVariation = 0.7 + (Math.random() * 0.6); // Between 0.7 and 1.3 multiplier
+        const speed = baseSpeed * speedVariation;
         
         // Update progress
         snail.progress += speed * deltaTime;

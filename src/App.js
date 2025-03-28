@@ -46,18 +46,20 @@ function App() {
     <div className="App">
       <Header onNavigate={handleNavigation} currentSection={selectedSection} />
       
-      {selectedSection === 'home' && (
-        <>
-          <Hero />
-          <SnailRace />
-          <SnailFacts />
-          <FunnySnails />
-        </>
-      )}
-      
-      {selectedSection === 'facts' && <SnailFacts fullPage={true} />}
-      {selectedSection === 'funny' && <FunnySnails fullPage={true} />}
-      {selectedSection === 'chat' && <Chat />}
+      <main>
+        {selectedSection === 'home' && (
+          <>
+            <Hero />
+            <SnailRace />
+            <SnailFacts fullPage={false} />
+            <FunnySnails fullPage={false} />
+          </>
+        )}
+        
+        {selectedSection === 'facts' && <SnailFacts fullPage={true} />}
+        {selectedSection === 'funny' && <FunnySnails fullPage={true} />}
+        {selectedSection === 'chat' && <Chat />}
+      </main>
       
       <Footer onNavigate={handleNavigation} />
       

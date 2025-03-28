@@ -7,13 +7,16 @@ import FunnySnails from './FunnySnails';
 import Footer from './Footer';
 import SnailRace from './SnailRace';
 import Chat from './Chat';
+import HealthSymptoms from './HealthSymptoms';
+import FeedingChart from './FeedingChart';
+import BeginnersGuide from './BeginnersGuide';
 
 function App() {
   const [highContrast, setHighContrast] = useState(false);
   const [largerText, setLargerText] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
   const [selectedSection, setSelectedSection] = useState('home');
-
+  
   useEffect(() => {
     // Apply accessibility classes to body
     if (highContrast) {
@@ -21,27 +24,25 @@ function App() {
     } else {
       document.body.classList.remove('high-contrast');
     }
-
     if (largerText) {
       document.body.classList.add('larger-text');
     } else {
       document.body.classList.remove('larger-text');
     }
-
     if (reducedMotion) {
       document.body.classList.add('reduced-motion');
     } else {
       document.body.classList.remove('reduced-motion');
     }
   }, [highContrast, largerText, reducedMotion]);
-
+  
   // Handle navigation
   const handleNavigation = (section) => {
     setSelectedSection(section);
     // Scroll to top when changing section
     window.scrollTo(0, 0);
   };
-
+  
   return (
     <div className="App">
       <Header onNavigate={handleNavigation} currentSection={selectedSection} />
@@ -59,6 +60,9 @@ function App() {
         {selectedSection === 'facts' && <SnailFacts fullPage={true} />}
         {selectedSection === 'funny' && <FunnySnails fullPage={true} />}
         {selectedSection === 'chat' && <Chat />}
+        {selectedSection === 'beginners-guide' && <BeginnersGuide />}
+        {selectedSection === 'feeding-chart' && <FeedingChart />}
+        {selectedSection === 'health-symptoms' && <HealthSymptoms />}
       </main>
       
       <Footer onNavigate={handleNavigation} />

@@ -470,4 +470,363 @@
   .content-page .intro-text {
     font-size: var(--font-size-md);
   }
+/* Additional CSS for new content pages */
+
+/* Breeding Tips Styles */
+.breeding-tips .conditions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-lg);
+  margin: var(--space-lg) 0;
 }
+
+.breeding-tips .condition-item {
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  background-color: var(--neutral-200);
+  border-left: 3px solid var(--primary-color);
+}
+
+.breeding-tips .option-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-xl);
+  margin: var(--space-lg) 0;
+}
+
+.breeding-tips .option-item {
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  background-color: var(--neutral-200);
+  box-shadow: var(--shadow-sm);
+}
+
+.breeding-tips .ethics-list li {
+  margin-bottom: var(--space-sm);
+}
+
+.breeding-tips .resources-section {
+  margin-top: var(--space-xl);
+  text-align: center;
+  padding: var(--space-lg);
+  background-color: var(--neutral-200);
+  border-radius: var(--radius-md);
+}
+
+.breeding-tips .resource-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+}
+
+/* About Us Styles */
+.about-us .story-content {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: var(--space-lg);
+  margin: var(--space-lg) 0;
+}
+
+.about-us .story-image,
+.about-us .member-photo {
+  background-color: var(--neutral-300);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.about-us .placeholder-image {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--neutral-600);
+  font-style: italic;
+}
+
+.about-us .member-photo .placeholder-image {
+  height: 150px;
+}
+
+.about-us .mission-points {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-lg);
+  margin: var(--space-lg) 0;
+}
+
+.about-us .mission-point {
+  padding: var(--space-md);
+  background-color: var(--primary-light);
+  color: var(--neutral-100);
+  border-radius: var(--radius-md);
+}
+
+.about-us .team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--space-lg);
+  margin: var(--space-lg) 0;
+}
+
+.about-us .team-member {
+  text-align: center;
+  padding: var(--space-md);
+  background-color: var(--neutral-200);
+  border-radius: var(--radius-md);
+}
+
+.about-us .member-title {
+  font-style: italic;
+  color: var(--primary-color);
+  margin-bottom: var(--space-sm);
+}
+
+.about-us .member-bio {
+  font-size: var(--font-size-sm);
+  text-align: left;
+}
+
+.about-us .values-list li {
+  margin-bottom: var(--space-sm);
+}
+
+.about-us .testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-lg);
+  margin: var(--space-lg) 0;
+}
+
+.about-us .testimonial {
+  padding: var(--space-md);
+  background-color: var(--neutral-200);
+  border-radius: var(--radius-md);
+  position: relative;
+}
+
+.about-us .testimonial:before {
+  content: '"';
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  font-size: 3rem;
+  color: var(--primary-light);
+  opacity: 0.3;
+}
+
+.about-us .testimonial-author {
+  text-align: right;
+  font-style: italic;
+  margin-top: var(--space-sm);
+}
+
+.about-us .contact-cta {
+  margin-top: var(--space-xl);
+  text-align: center;
+  padding: var(--space-lg);
+  background-color: var(--primary-light);
+  color: var(--neutral-100);
+  border-radius: var(--radius-md);
+}
+
+.about-us .btn-primary {
+  background-color: var(--neutral-100);
+  color: var(--primary-color);
+  padding: var(--space-sm) var(--space-xl);
+  border-radius: var(--radius-md);
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.about-us .btn-primary:hover {
+  background-color: var(--neutral-200);
+  transform: translateY(-2px);
+}
+
+/* Contact Styles */
+.contact .contact-grid {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: var(--space-xl);
+  margin-bottom: var(--space-xl);
+}
+
+.contact .contact-form {
+  background-color: var(--neutral-200);
+  padding: var(--space-lg);
+  border-radius: var(--radius-md);
+}
+
+.contact .form-success {
+  background-color: var(--success-light);
+  padding: var(--space-lg);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+.contact .form-success h3 {
+  color: var(--success-dark);
+  margin-bottom: var(--space-md);
+}
+
+.contact .contact-info {
+  background-color: var(--neutral-200);
+  padding: var(--space-lg);
+  border-radius: var(--radius-md);
+}
+
+.contact .info-list,
+.contact .hours-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: var(--space-lg);
+}
+
+.contact .info-list li {
+  display: flex;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.contact .info-icon {
+  font-size: 1.5rem;
+}
+
+.contact .hours-list li {
+  margin-bottom: var(--space-sm);
+}
+
+.contact .response-time {
+  background-color: var(--primary-light);
+  color: var(--neutral-100);
+  padding: var(--space-sm);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+.contact .social-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+
+.contact .social-button {
+  display: inline-block;
+  padding: var(--space-sm) var(--space-md);
+  background-color: var(--neutral-300);
+  color: var(--neutral-700);
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  transition: all var(--transition-normal);
+}
+
+.contact .social-button:hover {
+  transform: translateY(-2px);
+  background-color: var(--neutral-400);
+}
+
+.contact .social-button.instagram:hover {
+  background-color: #e1306c;
+  color: white;
+}
+
+.contact .social-button.facebook:hover {
+  background-color: #4267B2;
+  color: white;
+}
+
+.contact .social-button.youtube:hover {
+  background-color: #FF0000;
+  color: white;
+}
+
+.contact .social-button.twitter:hover {
+  background-color: #1DA1F2;
+  color: white;
+}
+
+.contact .btn-primary {
+  background-color: var(--primary-color);
+  color: var(--neutral-100);
+  padding: var(--space-sm) var(--space-xl);
+  border-radius: var(--radius-md);
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.contact .btn-primary:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+/* Privacy Policy Styles */
+.privacy-policy .last-updated,
+.terms-of-service .last-updated {
+  color: var(--neutral-600);
+  font-size: var(--font-size-sm);
+  margin-top: var(--space-sm);
+}
+
+.privacy-policy .policy-section,
+.terms-of-service .terms-section {
+  margin-bottom: var(--space-xl);
+}
+
+.privacy-policy .policy-section h3,
+.terms-of-service .terms-section h3 {
+  border-bottom: 1px solid var(--neutral-300);
+  padding-bottom: var(--space-xs);
+  margin-bottom: var(--space-md);
+}
+
+.privacy-policy .policy-section h4,
+.terms-of-service .terms-section h4 {
+  color: var(--neutral-700);
+  margin-top: var(--space-lg);
+  margin-bottom: var(--space-sm);
+}
+
+.privacy-policy .contact-info,
+.terms-of-service .contact-info {
+  background-color: var(--neutral-200);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  margin-top: var(--space-md);
+}
+
+/* Media Queries for new pages */
+@media (max-width: 992px) {
+  .about-us .story-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .contact .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .breeding-tips .option-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .about-us .team-grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
+  
+  .breeding-tips .resource-buttons,
+  .contact .social-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+}
+

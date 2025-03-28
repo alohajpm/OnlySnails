@@ -46,10 +46,10 @@ function Footer({ onNavigate }) {
             <div className="link-group">
               <h3>Connect</h3>
               <ul>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Terms of Service</a></li>
+                <li><button onClick={() => onNavigate('about-us')}>About Us</button></li>
+                <li><button onClick={() => onNavigate('contact')}>Contact</button></li>
+                <li><button onClick={() => onNavigate('privacy-policy')}>Privacy Policy</button></li>
+                <li><button onClick={() => onNavigate('terms-of-service')}>Terms of Service</button></li>
               </ul>
             </div>
           </div>

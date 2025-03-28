@@ -1,6 +1,15 @@
 import React from 'react';
 import './Hero.css';
-import heroSnailImg from './images/hero-snail.png';
+
+// Try to import hero image with fallback
+let heroSnailImg;
+try {
+  heroSnailImg = require('./images/hero-snail.png').default;
+} catch (e) {
+  // Placeholder colored rectangle as fallback
+  heroSnailImg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect width='600' height='400' fill='%2348A999' /%3E%3C/svg%3E";
+  console.warn("Couldn't load hero image, using placeholder");
+}
 
 function Hero() {
   return (
@@ -10,10 +19,10 @@ function Hero() {
           <h2>Welcome to the Premier <span className="accent">Snail Enthusiast</span> Community</h2>
           <p>Discover, share, and connect with fellow gastropod admirers. From rare species to expert care tips, dive into the fascinating world of snails.</p>
           <div className="cta-buttons">
-            <button className="btn btn-primary" onClick={() => window.scrollTo({ top: document.querySelector('.snail-facts').offsetTop, behavior: 'smooth' })}>
+            <button className="btn btn-primary" onClick={() => window.scrollTo({ top: document.querySelector('.snail-facts')?.offsetTop || 0, behavior: 'smooth' })}>
               Explore Snail Facts
             </button>
-            <button className="btn btn-secondary" onClick={() => window.scrollTo({ top: document.querySelector('.funny-snails').offsetTop, behavior: 'smooth' })}>
+            <button className="btn btn-secondary" onClick={() => window.scrollTo({ top: document.querySelector('.funny-snails')?.offsetTop || 0, behavior: 'smooth' })}>
               See Funny Snails
             </button>
           </div>

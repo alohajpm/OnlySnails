@@ -7,7 +7,7 @@ function Hero() {
     return (
       <svg 
         xmlns="http://www.w3.org/2000/svg" 
-        viewBox="0 0 300 200" 
+        viewBox="0 0 400 300" 
         className="hero-svg-image"
       >
         

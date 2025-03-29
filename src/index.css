@@ -281,9 +281,10 @@ p {
 }
 
 .btn-secondary {
-  background-color: transparent;
-  color: var(--primary-dark);
-  border: 2px solid var(--primary-dark);
+  background-color: var(--primary-dark);
+  border-color: var(--primary-dark);
+  color: var(--neutral-100);
+  text-decoration: none;
 }
 
 .btn-secondary:hover, .btn-secondary:focus {

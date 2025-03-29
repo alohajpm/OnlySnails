@@ -282,8 +282,8 @@ p {
 
 .btn-secondary {
   background-color: transparent;
-  color: var(--primary-color);
-  border: 2px solid var(--primary-color);
+  color: var(--primary-dark);
+  border: 2px solid var(--primary-dark);
 }
 
 .btn-secondary:hover, .btn-secondary:focus {

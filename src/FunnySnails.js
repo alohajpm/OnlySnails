@@ -6,7 +6,7 @@ let funnySnailImage1, funnySnailImage2, funnySnailImage3, funnySnailImage4, funn
 
 // First image
 try {
-  funnySnailImage1 = require('./images/funny-snail1.jpg');
+  funnySnailImage1 = require('./images/funny-snail1.svg');
 } catch (e) {
   funnySnailImage1 = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='250'%3E%3Crect width='400' height='250' fill='%23FF9800' /%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='24px'%3ESpeed Racer%3C/text%3E%3C/svg%3E";
   console.warn("Couldn't load funny snail image 1, using placeholder");
@@ -14,7 +14,7 @@ try {
 
 // Second image
 try {
-  funnySnailImage2 = require('./images/funny-snail2.jpg');
+  funnySnailImage2 = require('./images/funny-snail2.svg');
 } catch (e) {
   funnySnailImage2 = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='250'%3E%3Crect width='400' height='250' fill='%239C27B0' /%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='24px'%3EHome Improvement%3C/text%3E%3C/svg%3E";
   console.warn("Couldn't load funny snail image 2, using placeholder");
@@ -22,7 +22,7 @@ try {
 
 // Third image
 try {
-  funnySnailImage3 = require('./images/funny-snail3.jpg');
+  funnySnailImage3 = require('./images/funny-snail3.svg');
 } catch (e) {
   funnySnailImage3 = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='250'%3E%3Crect width='400' height='250' fill='%233F51B5' /%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='24px'%3EMonday Mood%3C/text%3E%3C/svg%3E";
   console.warn("Couldn't load funny snail image 3, using placeholder");
@@ -30,7 +30,7 @@ try {
 
 // Fourth image
 try {
-  funnySnailImage4 = require('./images/funny-snail4.jpg');
+  funnySnailImage4 = require('./images/funny-snail4.svg');
 } catch (e) {
   funnySnailImage4 = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='250'%3E%3Crect width='400' height='250' fill='%23E91E63' /%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='24px'%3EShell Shock%3C/text%3E%3C/svg%3E";
   console.warn("Couldn't load funny snail image 4, using placeholder");
@@ -38,7 +38,7 @@ try {
 
 // Fifth image
 try {
-  funnySnailImage5 = require('./images/funny-snail5.jpg');
+  funnySnailImage5 = require('./images/funny-snail5.svg');
 } catch (e) {
   funnySnailImage5 = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='250'%3E%3Crect width='400' height='250' fill='%234CAF50' /%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='24px'%3EGarden Party%3C/text%3E%3C/svg%3E";
   console.warn("Couldn't load funny snail image 5, using placeholder");
@@ -46,7 +46,7 @@ try {
 
 // Sixth image
 try {
-  funnySnailImage6 = require('./images/funny-snail6.jpg');
+  funnySnailImage6 = require('./images/funny-snail6.svg');
 } catch (e) {
   funnySnailImage6 = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='250'%3E%3Crect width='400' height='250' fill='%2300BCD4' /%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='24px'%3ESlime Time%3C/text%3E%3C/svg%3E";
   console.warn("Couldn't load funny snail image 6, using placeholder");

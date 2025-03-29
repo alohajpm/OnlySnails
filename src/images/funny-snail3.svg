@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <!-- Background - morning landscape -->
+  <rect width="400" height="300" fill="#C8B984"/>
+  
+  <!-- Hills in background -->
+  <ellipse cx="100" cy="100" rx="100" ry="60" fill="#95A882"/>
+  <ellipse cx="250" cy="80" rx="150" ry="50" fill="#7D9068"/>
+  <ellipse cx="380" cy="120" rx="100" ry="70" fill="#8A9B72"/>
+  
+  <!-- Ground -->
+  <rect y="230" width="400" height="70" fill="#9C5F2C"/>
+  
+  <!-- Snail trail as zigzag path -->
+  <path d="M0,260 L50,240 L100,260 L150,240 L200,260 L250,240 L300,260 L350,240 L400,260" 
+        fill="none" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Snail body -->
+  <path d="M200,220 C260,210 310,210 350,220 L350,250 C290,245 240,245 200,250 Z" 
+        fill="#FDEBD0" stroke="#F39C12" stroke-width="2"/>
+  
+  <!-- Head bump with tired expression -->
+  <path d="M200,220 C190,200 200,180 220,180 C240,180 250,200 240,220" 
+        fill="#FDEBD0" stroke="#F39C12" stroke-width="2"/>
+  
+  <!-- Shell -->
+  <circle cx="300" cy="180" r="60" fill="#D35400" stroke="#A04000" stroke-width="3"/>
+  
+  <!-- Shell spiral pattern - properly centered -->
+  <ellipse cx="300" cy="180" rx="45" ry="36" fill="none" stroke="#A04000" stroke-width="3"/>
+  <ellipse cx="300" cy="180" rx="32" ry="25" fill="none" stroke="#A04000" stroke-width="2.5"/>
+  <ellipse cx="300" cy="180" rx="20" ry="16" fill="none" stroke="#A04000" stroke-width="2"/>
+  <ellipse cx="300" cy="180" rx="10" ry="8" fill="none" stroke="#A04000" stroke-width="1.5"/>
+  
+  <!-- Eye stalks (drooping) -->
+  <path d="M220,185 C215,175 210,170 205,175" stroke="#F39C12" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <path d="M240,185 C245,175 250,170 255,175" stroke="#F39C12" stroke-width="4" stroke-linecap="round" fill="none"/>
+  
+  <!-- Eyes - tired, half-closed -->
+  <ellipse cx="205" cy="175" rx="8" ry="5" fill="white" stroke="#000" stroke-width="1"/>
+  <ellipse cx="255" cy="175" rx="8" ry="5" fill="white" stroke="#000" stroke-width="1"/>
+  <ellipse cx="205" cy="175" rx="3" ry="2" fill="black"/>
+  <ellipse cx="255" cy="175" rx="3" ry="2" fill="black"/>
+  
+  <!-- Tired eyelids -->
+  <path d="M197,172 C201,168 209,168 213,172" fill="none" stroke="#000" stroke-width="1.5"/>
+  <path d="M247,172 C251,168 259,168 263,172" fill="none" stroke="#000" stroke-width="1.5"/>
+  
+  <!-- Tired mouth -->
+  <path d="M215,210 C225,207 235,207 245,210" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Coffee mug -->
+  <path d="M275,235 L290,235 L287,245 L278,245 Z" fill="#F5EEF8" stroke="#7D3C98" stroke-width="1.5"/>
+  <path d="M290,240 L295,240 C295,240 295,235 290,235" fill="none" stroke="#7D3C98" stroke-width="1.5"/>
+  <path d="M279,230 L288,230 L290,235 L277,235 Z" fill="#7D3C98" stroke="#7D3C98" stroke-width="1"/>
+  <path d="M281,235 L286,245" fill="none" stroke="#7D3C98" stroke-width="0.5"/>
+  
+  <!-- Steam from coffee -->
+  <path d="M283,225 C283,223 285,222 285,220" stroke="#7D3C98" stroke-width="1" fill="none" stroke-dasharray="1,1"/>
+  <path d="M286,225 C286,222 288,220 288,217" stroke="#7D3C98" stroke-width="1" fill="none" stroke-dasharray="1,1"/>
+</svg>

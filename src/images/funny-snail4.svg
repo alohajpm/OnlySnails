@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <!-- Background - outdoor scene -->
+  <rect width="400" height="300" fill="#7BD5F5"/>
+  
+  <!-- Clouds -->
+  <ellipse cx="70" cy="80" rx="50" ry="30" fill="white"/>
+  <ellipse cx="100" cy="65" rx="40" ry="25" fill="white"/>
+  <ellipse cx="130" cy="80" rx="45" ry="30" fill="white"/>
+  
+  <ellipse cx="320" cy="50" rx="60" ry="35" fill="white"/>
+  <ellipse cx="350" cy="40" rx="40" ry="25" fill="white"/>
+  <ellipse cx="370" cy="55" rx="50" ry="30" fill="white"/>
+  
+  <!-- Ground -->
+  <path d="M0,250 C100,240 200,260 300,245 C350,237 400,245 400,245 L400,300 L0,300 Z" fill="#F2D16B"/>
+  
+  <!-- Snail body -->
+  <path d="M50,230 C110,220 170,220 230,220 C290,220 320,230 320,230 L320,260 C260,255 200,255 140,255 C80,255 50,260 50,260 Z" 
+        fill="#F0D6AC" stroke="#DB9B48" stroke-width="2"/>
+  
+  <!-- Head bump with shocked expression -->
+  <path d="M50,230 C40,210 50,190 70,190 C90,190 100,210 90,230" 
+        fill="#F0D6AC" stroke="#DB9B48" stroke-width="2"/>
+  
+  <!-- Shell with "startled" effect -->
+  <circle cx="180" cy="170" r="70" fill="#E67E22" stroke="#A04000" stroke-width="3"/>
+  
+  <!-- Shell spiral pattern - properly centered -->
+  <ellipse cx="180" cy="170" rx="50" ry="40" fill="none" stroke="#A04000" stroke-width="3"/>
+  <ellipse cx="180" cy="170" rx="35" ry="28" fill="none" stroke="#A04000" stroke-width="2.5"/>
+  <ellipse cx="180" cy="170" rx="20" ry="16" fill="none" stroke="#A04000" stroke-width="2"/>
+  <ellipse cx="180" cy="170" rx="10" ry="8" fill="none" stroke="#A04000" stroke-width="1.5"/>
+  
+  <!-- Hand touching shell -->
+  <path d="M230,120 C240,130 245,140 240,160 L226,165 C230,145 225,135 215,125 Z" fill="#FED3A1" stroke="#D68910" stroke-width="1.5"/>
+  <path d="M220,118 C235,118 240,125 245,130" fill="none" stroke="#D68910" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M218,122 C226,125 233,128 238,135" fill="none" stroke="#D68910" stroke-width="1.5" stroke-linecap="round"/>
+  
+  <!-- Shock effect lines around shell -->
+  <path d="M130,100 L150,120" stroke="#000" stroke-width="2" stroke-linecap="round"/>
+  <path d="M100,150 L120,160" stroke="#000" stroke-width="2" stroke-linecap="round"/>
+  <path d="M110,210 L130,195" stroke="#000" stroke-width="2" stroke-linecap="round"/>
+  <path d="M240,210 L220,195" stroke="#000" stroke-width="2" stroke-linecap="round"/>
+  <path d="M250,160 L230,160" stroke="#000" stroke-width="2" stroke-linecap="round"/>
+  <path d="M240,120 L220,135" stroke="#000" stroke-width="2" stroke-linecap="round"/>
+  <path d="M190,100 L180,120" stroke="#000" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Eye stalks - alert, startled -->
+  <line x1="60" y1="190" x2="50" y2="150" stroke="#DB9B48" stroke-width="4" stroke-linecap="round"/>
+  <line x1="80" y1="190" x2="90" y2="150" stroke="#DB9B48" stroke-width="4" stroke-linecap="round"/>
+  
+  <!-- Eyes - wide with shock -->
+  <circle cx="50" cy="150" r="12" fill="white" stroke="#000" stroke-width="2"/>
+  <circle cx="90" cy="150" r="12" fill="white" stroke="#000" stroke-width="2"/>
+  <circle cx="50" cy="150" r="5" fill="black"/>
+  <circle cx="90" cy="150" r="5" fill="black"/>
+  
+  <!-- Eyebrows showing shock -->
+  <path d="M40,140 L55,135" stroke="black" stroke-width="2" stroke-linecap="round"/>
+  <path d="M85,135 L100,140" stroke="black" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Shocked mouth -->
+  <ellipse cx="70" cy="210" rx="10" ry="15" fill="#EC7063" stroke="#A04000" stroke-width="2"/>
+  
+  <!-- Exclamation mark -->
+  <text x="250" y="135" font-family="Arial" font-size="40" font-weight="bold">!</text>
+</svg>

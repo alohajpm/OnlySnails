@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <!-- Background - garden scene -->
+  <rect width="400" height="300" fill="#4EA86B"/>
+  
+  <!-- Garden backdrop -->
+  <ellipse cx="50" cy="100" rx="70" ry="50" fill="#3A7F4E"/>
+  <ellipse cx="200" cy="80" rx="100" ry="60" fill="#3A7F4E"/>
+  <ellipse cx="350" cy="100" rx="80" ry="55" fill="#3A7F4E"/>
+  
+  <!-- Leaf foreground -->
+  <path d="M150,200 C100,150 200,100 250,150 C300,200 200,250 150,200 Z" fill="#64AF80" stroke="#3A7F4E" stroke-width="2"/>
+  <path d="M150,200 C170,180 200,180 220,190" fill="none" stroke="#3A7F4E" stroke-width="1.5"/>
+  <path d="M250,150 C230,170 210,175 180,180" fill="none" stroke="#3A7F4E" stroke-width="1.5"/>
+  
+  <!-- Multiple snails in the scene -->
+  
+  <!-- Main snail in foreground -->
+  <g transform="translate(180, 190) scale(1.2)">
+    <!-- Snail body -->
+    <path d="M-50,20 C-20,15 10,15 40,20 L40,40 C10,35 -20,35 -50,40 Z" 
+          fill="#FBEEE6" stroke="#E59866" stroke-width="2"/>
+    
+    <!-- Head bump with happy expression -->
+    <path d="M-50,20 C-55,10 -50,0 -40,0 C-30,0 -25,10 -30,20" 
+          fill="#FBEEE6" stroke="#E59866" stroke-width="2"/>
+    
+    <!-- Shell -->
+    <circle cx="0" cy="-10" r="35" fill="#E67E22" stroke="#A04000" stroke-width="3"/>
+    
+    <!-- Shell spiral pattern - properly centered -->
+    <ellipse cx="0" cy="-10" rx="25" ry="20" fill="none" stroke="#A04000" stroke-width="3"/>
+    <ellipse cx="0" cy="-10" rx="18" ry="14" fill="none" stroke="#A04000" stroke-width="2.5"/>
+    <ellipse cx="0" cy="-10" rx="10" ry="8" fill="none" stroke="#A04000" stroke-width="2"/>
+    <ellipse cx="0" cy="-10" rx="5" ry="4" fill="none" stroke="#A04000" stroke-width="1.5"/>
+    
+    <!-- Eye stalks -->
+    <line x1="-45" y1="0" x2="-50" y2="-15" stroke="#E59866" stroke-width="3" stroke-linecap="round"/>
+    <line x1="-35" y1="0" x2="-30" y2="-15" stroke="#E59866" stroke-width="3" stroke-linecap="round"/>
+    
+    <!-- Eyes -->
+    <circle cx="-50" cy="-15" r="5" fill="white" stroke="#000" stroke-width="1"/>
+    <circle cx="-30" cy="-15" r="5" fill="white" stroke="#000" stroke-width="1"/>
+    
+    <!-- Pupils as happy crescents -->
+    <path d="M-52,-15 C-50,-18 -47,-18 -45,-15" stroke="black" stroke-width="1.5" fill="none"/>
+    <path d="M-32,-15 C-30,-18 -27,-18 -25,-15" stroke="black" stroke-width="1.5" fill="none"/>
+    
+    <!-- Happy mouth -->
+    <path d="M-45,10 C-40,15 -35,15 -30,10" fill="none" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
+  </g>
+  
+  <!-- Second snail (smaller) -->
+  <g transform="translate(120, 250) scale(0.8)">
+    <!-- Snail body -->
+    <path d="M-50,20 C-20,15 10,15 40,20 L40,40 C10,35 -20,35 -50,40 Z" 
+          fill="#FBEEE6" stroke="#E59866" stroke-width="2"/>
+    
+    <!-- Head bump with happy expression -->
+    <path d="M-50,20 C-55,10 -50,0 -40,0 C-30,0 -25,10 -30,20" 
+          fill="#FBEEE6" stroke="#E59866" stroke-width="2"/>
+    
+    <!-- Shell -->
+    <circle cx="0" cy="-10" r="35" fill="#E67E22" stroke="#A04000" stroke-width="3"/>
+    
+    <!-- Shell spiral pattern - properly centered -->
+    <ellipse cx="0" cy="-10" rx="25" ry="20" fill="none" stroke="#A04000" stroke-width="3"/>
+    <ellipse cx="0" cy="-10" rx="18" ry="14" fill="none" stroke="#A04000" stroke-width="2.5"/>
+    <ellipse cx="0" cy="-10" rx="10" ry="8" fill="none" stroke="#A04000" stroke-width="2"/>
+    <ellipse cx="0" cy="-10" rx="5" ry="4" fill="none" stroke="#A04000" stroke-width="1.5"/>
+    
+    <!-- Eye stalks -->
+    <line x1="-45" y1="0" x2="-50" y2="-15" stroke="#E59866" stroke-width="3" stroke-linecap="round"/>
+    <line x1="-35" y1="0" x2="-30" y2="-15" stroke="#E59866" stroke-width="3" stroke-linecap="round"/>
+    
+    <!-- Eyes -->
+    <circle cx="-50" cy="-15" r="5" fill="white" stroke="#000" stroke-width="1"/>
+    <circle cx="-30" cy="-15" r="5" fill="white" stroke="#000" stroke-width="1"/>
+    
+    <!-- Pupils as happy crescents -->
+    <path d="M-52,-15 C-50,-18 -47,-18 -45,-15" stroke="black" stroke-width="1.5" fill="none"/>
+    <path d="M-32,-15 C-30,-18 -27,-18 -25,-15" stroke="black" stroke-width="1.5" fill="none"/>
+    
+    <!-- Happy mouth -->
+    <path d="M-45,10 C-40,15 -35,15 -30,10" fill="none" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
+  </g>
+  
+  <!-- Third snail (tiny) -->
+  <g transform="translate(270, 220) scale(0.6)">
+    <!-- Snail body -->
+    <path d="M-50,20 C-20,15 10,15 40,20 L40,40 C10,35 -20,35 -50,40 Z" 
+          fill="#FBEEE6" stroke="#E59866" stroke-width="2"/>
+    
+    <!-- Head bump with happy expression -->
+    <path d="M-50,20 C-55,10 -50,0 -40,0 C-30,0 -25,10 -30,20" 
+          fill="#FBEEE6" stroke="#E59866" stroke-width="2"/>
+    
+    <!-- Shell -->
+    <circle cx="0" cy="-10" r="35" fill="#E67E22" stroke="#A04000" stroke-width="3"/>
+    
+    <!-- Shell spiral pattern -->
+    <path d="M0,-10 A25,25 0 0 1 -25,-35 A25,25 0 0 1 0,-10" 
+          fill="none" stroke="#A04000" stroke-width="3"/>
+    <path d="M0,-10 A15,15 0 0 1 -15,-25 A15,15 0 0 1 0,-10" 
+          fill="none" stroke="#A04000" stroke-width="2.5"/>
+    <path d="M0,-10 A8,8 0 0 1 -8,-18 A8,8 0 0 1 0,-10" 
+          fill="none" stroke="#A04000" stroke-width="2"/>
+    
+    <!-- Eye stalks -->
+    <line x1="-45" y1="0" x2="-50" y2="-15" stroke="#E59866" stroke-width="3" stroke-linecap="round"/>
+    <line x1="-35" y1="0" x2="-30" y2="-15" stroke="#E59866" stroke-width="3" stroke-linecap="round"/>
+    
+    <!-- Eyes -->
+    <circle cx="-50" cy="-15" r="5" fill="white" stroke="#000" stroke-width="1"/>
+    <circle cx="-30" cy="-15" r="5" fill="white" stroke="#000" stroke-width="1"/>
+    
+    <!-- Pupils as happy crescents -->
+    <path d="M-52,-15 C-50,-18 -47,-18 -45,-15" stroke="black" stroke-width="1.5" fill="none"/>
+    <path d="M-32,-15 C-30,-18 -27,-18 -25,-15" stroke="black" stroke-width="1.5" fill="none"/>
+    
+    <!-- Happy mouth -->
+    <path d="M-45,10 C-40,15 -35,15 -30,10" fill="none" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
+  </g>
+  
+  <!-- Fourth snail (tiny in background) -->
+  <g transform="translate(330, 260) scale(0.5)">
+    <!-- Snail body -->
+    <path d="M-50,20 C-20,15 10,15 40,20 L40,40 C10,35 -20,35 -50,40 Z" 
+          fill="#FBEEE6" stroke="#E59866" stroke-width="2"/>
+    
+    <!-- Head bump with happy expression -->
+    <path d="M-50,20 C-55,10 -50,0 -40,0 C-30,0 -25,10 -30,20" 
+          fill="#FBEEE6" stroke="#E59866" stroke-width="2"/>
+    
+    <!-- Shell -->
+    <circle cx="0" cy="-10" r="35" fill="#E67E22" stroke="#A04000" stroke-width="3"/>
+    
+    <!-- Shell spiral pattern -->
+    <path d="M0,-10 A25,25 0 0 1 -25,-35 A25,25 0 0 1 0,-10" 
+          fill="none" stroke="#A04000" stroke-width="3"/>
+    <path d="M0,-10 A15,15 0 0 1 -15,-25 A15,15 0 0 1 0,-10" 
+          fill="none" stroke="#A04000" stroke-width="2.5"/>
+    <path d="M0,-10 A8,8 0 0 1 -8,-18 A8,8 0 0 1 0,-10" 
+          fill="none" stroke="#A04000" stroke-width="2"/>
+    
+    <!-- Eye stalks -->
+    <line x1="-45" y1="0" x2="-50" y2="-15" stroke="#E59866" stroke-width="3" stroke-linecap="round"/>
+    <line x1="-35" y1="0" x2="-30" y2="-15" stroke="#E59866" stroke-width="3" stroke-linecap="round"/>
+    
+    <!-- Eyes -->
+    <circle cx="-50" cy="-15" r="5" fill="white" stroke="#000" stroke-width="1"/>
+    <circle cx="-30" cy="-15" r="5" fill="white" stroke="#000" stroke-width="1"/>
+    
+    <!-- Pupils as happy crescents -->
+    <path d="M-52,-15 C-50,-18 -47,-18 -45,-15" stroke="black" stroke-width="1.5" fill="none"/>
+    <path d="M-32,-15 C-30,-18 -27,-18 -25,-15" stroke="black" stroke-width="1.5" fill="none"/>
+    
+    <!-- Happy mouth -->
+    <path d="M-45,10 C-40,15 -35,15 -30,10" fill="none" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
+  </g>
+</svg>

@@ -5,42 +5,37 @@ function Hero() {
   // Using inline SVG rather than trying to load an external image
   const renderHeroImage = () => {
     return (
-      <svg 
-        xmlns="http://www.w3.org/2000/svg" 
-        viewBox="0 0 300 200" 
-        className="hero-svg-image"
-      >
-        {/* Background gradient */}
-        <defs>
-          <linearGradient id="shellGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#8D6E63" />
-            <stop offset="100%" stopColor="#5D4037" />
-          </linearGradient>
-          <linearGradient id="bodyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#FFD54F" />
-            <stop offset="100%" stopColor="#FFA000" />
-          </linearGradient>
-        </defs>
-        
-        {/* Grass */}
-        <path d="M0,150 C50,130 100,160 150,140 C200,120 250,150 300,130 L300,200 L0,200 Z" fill="#81C784" />
-        
-        {/* Snail body */}
-        <path d="M120,150 Q90,150 80,130 Q70,110 90,100 L150,100 Q170,100 170,120 L170,135 Q150,150 120,150" fill="url(#bodyGradient)" />
-        
-        {/* Snail shell */}
-        <path d="M150,100 Q190,80 170,50 Q150,20 120,30 Q90,40 100,70 Q110,100 130,110 Q140,115 150,100" fill="url(#shellGradient)" />
-        <path d="M145,95 Q175,80 160,60 Q145,40 125,45 Q105,50 110,70 Q115,90 130,100 Q137,105 145,95" fill="#D7CCC8" opacity="0.7" />
-        
-        {/* Snail eyes */}
-        <line x1="80" y1="100" x2="70" y2="80" stroke="#5D4037" strokeWidth="2" />
-        <circle cx="70" cy="75" r="5" fill="#FFD54F" />
-        <circle cx="70" cy="75" r="2" fill="#5D4037" />
-        
-        <line x1="90" y1="100" x2="85" y2="75" stroke="#5D4037" strokeWidth="2" />
-        <circle cx="85" cy="70" r="5" fill="#FFD54F" />
-        <circle cx="85" cy="70" r="2" fill="#5D4037" />
-      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <!-- Body - long horizontal shape -->
+  <path d="M50,220 C110,210 170,210 230,210 C290,210 350,220 350,220 L350,250 C290,245 230,245 170,245 C110,245 50,250 50,250 Z" 
+        fill="#8dab91" stroke="#5d8b6d" stroke-width="2"/>
+  
+  <!-- Head bump -->
+  <path d="M50,220 C40,200 50,180 70,180 C90,180 100,200 90,220" 
+        fill="#8dab91" stroke="#5d8b6d" stroke-width="2"/>
+  
+  <!-- Eye stalks -->
+  <path d="M60,180 C55,170 55,160 60,150" stroke="#5d8b6d" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <path d="M80,180 C85,170 85,160 80,150" stroke="#5d8b6d" stroke-width="3" stroke-linecap="round" fill="none"/>
+  
+  <!-- Eyes -->
+  <circle cx="60" cy="150" r="7" fill="#ffffff" stroke="#5d8b6d" stroke-width="1.5"/>
+  <circle cx="80" cy="150" r="7" fill="#ffffff" stroke="#5d8b6d" stroke-width="1.5"/>
+  <circle cx="60" cy="150" r="3.5" fill="#2c3e50"/>
+  <circle cx="80" cy="150" r="3.5" fill="#2c3e50"/>
+  
+  <!-- Shell - positioned on back -->
+  <ellipse cx="230" cy="160" rx="80" ry="70" fill="#c17a44" stroke="#8b4513" stroke-width="3"/>
+  
+  <!-- Shell spiral pattern -->
+  <ellipse cx="230" cy="160" rx="60" ry="52" fill="none" stroke="#8b4513" stroke-width="2.5"/>
+  <ellipse cx="230" cy="160" rx="40" ry="35" fill="none" stroke="#8b4513" stroke-width="2.5"/>
+  <ellipse cx="230" cy="160" rx="20" ry="17" fill="none" stroke="#8b4513" stroke-width="2.5"/>
+  
+  <!-- Slime trail -->
+  <path d="M50,250 C40,250 30,252 20,252 C10,252 0,250 -10,250" 
+        fill="none" stroke="#c5e0c9" stroke-width="4" stroke-linecap="round" stroke-opacity="0.7"/>
+</svg>
     );
   };
 

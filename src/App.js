@@ -15,6 +15,7 @@ import AboutUs from './AboutUs';
 import Contact from './Contact';
 import PrivacyPolicy from './PrivacyPolicy';
 import TermsOfService from './TermsOfService';
+import { Analytics } from "@vercel/analytics/react"
 
 function App() {
   const [highContrast, setHighContrast] = useState(false);

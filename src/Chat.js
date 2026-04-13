@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './Chat.css';
 
-// Keep loading messages outside the component so eslint does not complain
 const loadingMessages = [
   "Slithering to find an answer...",
   "Consulting my shell of knowledge...",
@@ -15,7 +14,6 @@ const loadingMessages = [
   "Calculating snail-culations..."
 ];
 
-// Try to import user avatar with fallback
 let userAvatarImg;
 try {
   userAvatarImg = require('./images/user-avatar.png');
@@ -107,10 +105,12 @@ function Chat() {
   };
 
   const callClaudeAPI = async (messageHistory) => {
-    const apiMessages = messageHistory.map((msg) => ({
-      role: msg.sender === 'user' ? 'user' : 'assistant',
-      content: msg.content
-    }));
+    const apiMessages = messageHistory
+      .filter((msg) => msg.sender === 'user' || msg.sender === 'assistant')
+      .map((msg) => ({
+        role: msg.sender === 'user' ? 'user' : 'assistant',
+        content: msg.content
+      }));
 
     const response = await fetch('/api/claude', {
       method: 'POST',
